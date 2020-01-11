@@ -117,7 +117,7 @@ opt_in_rules:
 # SwiftLintの適用から外すディレクトリ
 # (UnitTestやUITestもある場合は修正されますので入れます)
 excluded:
-  #  - valu/SupportingFiles/R.generated.swift
+  - R.generated.swift
   - Carthage
   - fastlane
   - firebase

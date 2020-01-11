@@ -101,3 +101,6 @@ iOSInjectionProject/
 GoogleService-Info.plist
 GoogleService-Info.plist
 
+# R.swift
+*.generated.swift 
+

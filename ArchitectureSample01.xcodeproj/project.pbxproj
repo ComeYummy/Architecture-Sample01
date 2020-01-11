@@ -18,6 +18,7 @@
 		C572A80823C9BC5000C990AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */; };
 		C572A81323C9BC5000C990AF /* ArchitectureSample01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A81223C9BC5000C990AF /* ArchitectureSample01Tests.swift */; };
 		C572A81E23C9BC5000C990AF /* ArchitectureSample01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A81D23C9BC5000C990AF /* ArchitectureSample01UITests.swift */; };
+		C572A82E23C9E88800C990AF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A82D23C9E88800C990AF /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C572A81923C9BC5000C990AF /* ArchitectureSample01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArchitectureSample01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A81D23C9BC5000C990AF /* ArchitectureSample01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureSample01UITests.swift; sourceTree = "<group>"; };
 		C572A81F23C9BC5000C990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C572A82D23C9E88800C990AF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		CB59F48FDA93E95E9F10D457 /* Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01-ArchitectureSample01UITests/Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB6F006042944A08A50C7164 /* Pods-ArchitectureSample01Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01Tests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01Tests/Pods-ArchitectureSample01Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EC178E7EB30147CDBE55328C /* Pods-ArchitectureSample01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		C572A7EF23C9BC4F00C990AF = {
 			isa = PBXGroup;
 			children = (
+				C572A82D23C9E88800C990AF /* R.generated.swift */,
 				C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */,
 				C572A81123C9BC5000C990AF /* ArchitectureSample01Tests */,
 				C572A81C23C9BC5000C990AF /* ArchitectureSample01UITests */,
@@ -176,12 +179,12 @@
 			buildConfigurationList = C572A82223C9BC5000C990AF /* Build configuration list for PBXNativeTarget "ArchitectureSample01" */;
 			buildPhases = (
 				6CFBDD0D70C9691BDC8F5A0F /* [CP] Check Pods Manifest.lock */,
-				C572A7F423C9BC4F00C990AF /* Sources */,
 				C572A7F523C9BC4F00C990AF /* Frameworks */,
 				C572A7F623C9BC4F00C990AF /* Resources */,
 				B3E818E4CCEACCE4B89B5F2C /* [CP] Embed Pods Frameworks */,
 				C572A82B23C9C38D00C990AF /* SwiftLint Run Script */,
 				C572A82C23C9CF5B00C990AF /* R.swift Run Script */,
+				C572A7F423C9BC4F00C990AF /* Sources */,
 			);
 			buildRules = (
 			);
@@ -428,15 +431,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
 			);
 			name = "R.swift Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -448,6 +453,7 @@
 				C572A80023C9BC4F00C990AF /* ViewController.swift in Sources */,
 				C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
+				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
