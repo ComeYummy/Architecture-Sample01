@@ -5,6 +5,8 @@ disabled_rules:
   #  - cyclomatic_complexity
   - function_parameter_count
   - force_try
+  - force_unwrapping
+  - force_cast
   #  - nesting
   - valid_ibinspectable
   - unused_optional_binding
@@ -20,7 +22,7 @@ opt_in_rules:
   - collection_alignment
   #- conditional_returns_on_newline
   - contains_over_first_not_nil
-  - convenience_type
+  #- convenience_type
   #- discouraged_object_literal # オブジェクトリテラルを使いたいため
   - discouraged_optional_boolean
   #- discouraged_optional_collection
@@ -114,7 +116,7 @@ excluded:
 
 # 1行あたりの文字数制限など
 line_length:
-  warning: 200 # 150
+  warning: 300 # 150
   error: 1000 # Remove
   ignores_comments: true
 type_body_length:

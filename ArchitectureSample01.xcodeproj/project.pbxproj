@@ -20,9 +20,17 @@
 		C572A81E23C9BC5000C990AF /* ArchitectureSample01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A81D23C9BC5000C990AF /* ArchitectureSample01UITests.swift */; };
 		C572A82E23C9E88800C990AF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A82D23C9E88800C990AF /* R.generated.swift */; };
 		C572A83323C9EFFE00C990AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */; };
-		C572A83523CA058900C990AF /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C572A83423CA058900C990AF /* LogIn.storyboard */; };
+		C572A83523CA058900C990AF /* LogInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C572A83423CA058900C990AF /* LogInViewController.storyboard */; };
 		C572A83723CA05A100C990AF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A83623CA05A100C990AF /* LogInViewController.swift */; };
 		C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A83B23CA18E700C990AF /* UINavigationItem+.swift */; };
+		C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A83D23CA231D00C990AF /* ListViewController.swift */; };
+		C572A84023CA234300C990AF /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C572A83F23CA234300C990AF /* ListViewController.storyboard */; };
+		C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A84123CA25B400C990AF /* ListTableViewCell.swift */; };
+		C572A84423CA25C700C990AF /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C572A84323CA25C700C990AF /* ListTableViewCell.xib */; };
+		C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */; };
+		C5CCAAF723CA2E7400CEC626 /* PostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */; };
+		C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCAAF823CA454800CEC626 /* Appearance.swift */; };
+		C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CCAAFA23CA45A500CEC626 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +72,17 @@
 		C572A81F23C9BC5000C990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C572A82D23C9E88800C990AF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C572A83423CA058900C990AF /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
+		C572A83423CA058900C990AF /* LogInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogInViewController.storyboard; sourceTree = "<group>"; };
 		C572A83623CA05A100C990AF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		C572A83B23CA18E700C990AF /* UINavigationItem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+.swift"; sourceTree = "<group>"; };
+		C572A83D23CA231D00C990AF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		C572A83F23CA234300C990AF /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
+		C572A84123CA25B400C990AF /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		C572A84323CA25C700C990AF /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostViewController.storyboard; sourceTree = "<group>"; };
+		C5CCAAF823CA454800CEC626 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		C5CCAAFA23CA45A500CEC626 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CB59F48FDA93E95E9F10D457 /* Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01-ArchitectureSample01UITests/Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB6F006042944A08A50C7164 /* Pods-ArchitectureSample01Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01Tests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01Tests/Pods-ArchitectureSample01Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EC178E7EB30147CDBE55328C /* Pods-ArchitectureSample01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,9 +156,15 @@
 				C572A83823CA189B00C990AF /* Application */,
 				C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */,
 				C572A80123C9BC4F00C990AF /* Main.storyboard */,
-				C572A82F23C9E97A00C990AF /* SupportingFiles */,
-				C572A83423CA058900C990AF /* LogIn.storyboard */,
+				C572A83423CA058900C990AF /* LogInViewController.storyboard */,
 				C572A83623CA05A100C990AF /* LogInViewController.swift */,
+				C572A83D23CA231D00C990AF /* ListViewController.swift */,
+				C572A84123CA25B400C990AF /* ListTableViewCell.swift */,
+				C572A83F23CA234300C990AF /* ListViewController.storyboard */,
+				C572A84323CA25C700C990AF /* ListTableViewCell.xib */,
+				C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */,
+				C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */,
+				C572A82F23C9E97A00C990AF /* SupportingFiles */,
 			);
 			path = ArchitectureSample01;
 			sourceTree = "<group>";
@@ -181,6 +203,7 @@
 			children = (
 				C572A83A23CA18C600C990AF /* Extensions */,
 				C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */,
+				C5CCAAF823CA454800CEC626 /* Appearance.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -198,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				C572A83B23CA18E700C990AF /* UINavigationItem+.swift */,
+				C5CCAAFA23CA45A500CEC626 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,10 +351,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C572A80823C9BC5000C990AF /* LaunchScreen.storyboard in Resources */,
+				C5CCAAF723CA2E7400CEC626 /* PostViewController.storyboard in Resources */,
 				C572A83323C9EFFE00C990AF /* GoogleService-Info.plist in Resources */,
 				C572A80523C9BC5000C990AF /* Assets.xcassets in Resources */,
 				C572A80323C9BC4F00C990AF /* Main.storyboard in Resources */,
-				C572A83523CA058900C990AF /* LogIn.storyboard in Resources */,
+				C572A83523CA058900C990AF /* LogInViewController.storyboard in Resources */,
+				C572A84023CA234300C990AF /* ListViewController.storyboard in Resources */,
+				C572A84423CA25C700C990AF /* ListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,12 +523,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */,
 				C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */,
+				C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */,
 				C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */,
+				C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */,
 				C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */,
+				C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
 				C572A83723CA05A100C990AF /* LogInViewController.swift in Sources */,
 				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
+				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

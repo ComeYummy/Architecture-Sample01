@@ -50,12 +50,13 @@ class SignUpViewController: UIViewController {
 
     @objc
     private func toLogin() {
-        guard let vc = R.storyboard.logIn.instantiateInitialViewController() else { return }
+        guard let vc = R.storyboard.logInViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
 
     private func toList() {
-        //        self.performSegue(withIdentifier: R.segue.signUpViewController.toList, sender: self)
+        guard let vc = R.storyboard.listViewController.instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(vc, animated: false)
     }
 
     private func signUp() {
@@ -65,6 +66,7 @@ class SignUpViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
                 let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
                 print(error.localizedDescription)
                 return
@@ -72,6 +74,7 @@ class SignUpViewController: UIViewController {
             authResult?.user.sendEmailVerification { [unowned self] error in
                 if let error = error {
                     let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                     print(error.localizedDescription)
                     return
