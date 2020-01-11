@@ -6,6 +6,21 @@ target 'ArchitectureSample01' do
   use_frameworks!
 
   # Pods for ArchitectureSample01
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Functions'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  # pod 'Firebase/Core' 最近必要ない？
+  pod 'Firebase/Firestore'
+
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod 'RealmSwift'
+
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'SwiftLint'
+  pod 'R.swift'
 
   target 'ArchitectureSample01Tests' do
     inherit! :search_paths
