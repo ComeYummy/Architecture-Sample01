@@ -106,7 +106,6 @@
 		C572A7EF23C9BC4F00C990AF = {
 			isa = PBXGroup;
 			children = (
-				C572A82D23C9E88800C990AF /* R.generated.swift */,
 				C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */,
 				C572A81123C9BC5000C990AF /* ArchitectureSample01Tests */,
 				C572A81C23C9BC5000C990AF /* ArchitectureSample01UITests */,
@@ -129,13 +128,12 @@
 		C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */ = {
 			isa = PBXGroup;
 			children = (
+				C572A82F23C9E97A00C990AF /* SupportingFiles */,
 				C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */,
 				C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */,
 				C572A7FF23C9BC4F00C990AF /* ViewController.swift */,
 				C572A80123C9BC4F00C990AF /* Main.storyboard */,
-				C572A80423C9BC5000C990AF /* Assets.xcassets */,
 				C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */,
-				C572A80923C9BC5000C990AF /* Info.plist */,
 			);
 			path = ArchitectureSample01;
 			sourceTree = "<group>";
@@ -156,6 +154,16 @@
 				C572A81F23C9BC5000C990AF /* Info.plist */,
 			);
 			path = ArchitectureSample01UITests;
+			sourceTree = "<group>";
+		};
+		C572A82F23C9E97A00C990AF /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C572A80423C9BC5000C990AF /* Assets.xcassets */,
+				C572A80923C9BC5000C990AF /* Info.plist */,
+				C572A82D23C9E88800C990AF /* R.generated.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		E14251319CD5E005E611471D /* Pods */ = {
@@ -629,7 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D8H2B9686D;
-				INFOPLIST_FILE = ArchitectureSample01/Info.plist;
+				INFOPLIST_FILE = ArchitectureSample01/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,7 +656,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D8H2B9686D;
-				INFOPLIST_FILE = ArchitectureSample01/Info.plist;
+				INFOPLIST_FILE = ArchitectureSample01/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
