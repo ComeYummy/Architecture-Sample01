@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -165,7 +165,6 @@
 				14CEBED1588EE6D40FDD2028 /* Pods-ArchitectureSample01Tests.debug.xcconfig */,
 				CB6F006042944A08A50C7164 /* Pods-ArchitectureSample01Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +180,7 @@
 				C572A7F523C9BC4F00C990AF /* Frameworks */,
 				C572A7F623C9BC4F00C990AF /* Resources */,
 				B3E818E4CCEACCE4B89B5F2C /* [CP] Embed Pods Frameworks */,
+				C572A82B23C9C38D00C990AF /* SwiftLint Run Script */,
 			);
 			buildRules = (
 			);
@@ -400,6 +400,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C572A82B23C9C38D00C990AF /* SwiftLint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    swiftlint autocorrect --format\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
