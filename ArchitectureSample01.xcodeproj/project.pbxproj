@@ -181,6 +181,7 @@
 				C572A7F623C9BC4F00C990AF /* Resources */,
 				B3E818E4CCEACCE4B89B5F2C /* [CP] Embed Pods Frameworks */,
 				C572A82B23C9C38D00C990AF /* SwiftLint Run Script */,
+				C572A82C23C9CF5B00C990AF /* R.swift Run Script */,
 			);
 			buildRules = (
 			);
@@ -418,6 +419,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    swiftlint autocorrect --format\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		C572A82C23C9CF5B00C990AF /* R.swift Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "R.swift Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
