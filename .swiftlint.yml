@@ -131,7 +131,7 @@ file_length:
   error: 1200
 
 identifier_name:
-  min_length: # only min_length
+  min_length: 2 # only min_length
   error: 2 # only error
   excluded: # excluded via string array
     - id

@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ymy-gH-1Iw">
-                                <rect key="frame" x="48" y="488" width="318" height="40"/>
+                                <rect key="frame" x="48" y="448" width="318" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HdQ-8d-urg"/>
                                 </constraints>
@@ -24,7 +24,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f3Q-Fz-8Zt">
-                                <rect key="frame" x="48" y="576" width="318" height="40"/>
+                                <rect key="frame" x="48" y="536" width="318" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Ll-q1-vKI"/>
                                 </constraints>
@@ -46,10 +46,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seo-and-web" translatesAutoresizingMaskIntoConstraints="NO" id="H5M-vv-Zxy">
-                                <rect key="frame" x="87" y="160" width="240" height="240"/>
+                                <rect key="frame" x="107" y="160" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="9z1-kd-Jqh"/>
-                                    <constraint firstAttribute="width" constant="240" id="Tej-qu-lWc"/>
+                                    <constraint firstAttribute="width" constant="200" id="X2C-bx-dM6"/>
+                                    <constraint firstAttribute="width" secondItem="H5M-vv-Zxy" secondAttribute="height" multiplier="1:1" id="spB-3x-rEw"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -72,6 +72,9 @@
                     <navigationItem key="navigationItem" title="SignUp" id="ggW-fv-wIt">
                         <barButtonItem key="rightBarButtonItem" title="LogIn" id="nyz-E3-Vf1">
                             <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logInButtonTapped:" destination="BYZ-38-t0r" id="czn-Ki-o4Z"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

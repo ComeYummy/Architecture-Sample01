@@ -15,8 +15,8 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        initializeUI()
+        configureNavigation()
+        configureView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,9 +25,18 @@ class SignUpViewController: UIViewController {
         if isUserVerified() { toList() }
     }
 
-    func initializeUI() {
+    private func configureNavigation() {
+        title = "SignUp"
+        //        navigationItem.removeBackBarButtonTitle()
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LOGIN", style: .plain, target: self, action: #selector(toLogin))
+    }
+
+    private func configureView() {
         emailTextField.delegate = self
+        emailTextField.textContentType = .username
+        emailTextField.keyboardType = .emailAddress
         passwordTextField.delegate = self
+        passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
     }
 
@@ -35,34 +44,44 @@ class SignUpViewController: UIViewController {
         signUp()
     }
 
-    func toLogin() {
-        //        self.performSegue(withIdentifier: R.segue.signUpViewController.toLogin, sender: self)
+    @IBAction private func logInButtonTapped(_ sender: Any) {
+        toLogin()
     }
 
-    func toList() {
+    @objc
+    private func toLogin() {
+        guard let vc = R.storyboard.logIn.instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func toList() {
         //        self.performSegue(withIdentifier: R.segue.signUpViewController.toList, sender: self)
     }
 
-    func signUp() {
+    private func signUp() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
 
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
+                let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
+                self?.present(alert, animated: true, completion: nil)
                 print(error.localizedDescription)
                 return
             }
             authResult?.user.sendEmailVerification { [unowned self] error in
                 if let error = error {
+                    let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
+                    self?.present(alert, animated: true, completion: nil)
                     print(error.localizedDescription)
                     return
                 }
-                self.toLogin()
+                self?.toLogin()
             }
         }
     }
 
-    func isUserVerified() -> Bool {
+    private func isUserVerified() -> Bool {
         guard let user = Auth.auth().currentUser else { return false }
         return user.isEmailVerified
     }
