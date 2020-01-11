@@ -24,3 +24,7 @@ $ bundle exec pod install
 
 ⌘B でプロジェクトをビルドし、「$SRCROOT(通常はプロジェクトのルートフォルダ)」に「R.generated.swift」が生成されたら、プロジェクトにドラッグ&ドロップします。
 ※[Copy items if needed]チェックをOFF！
+
+## GoogleService-Info.plist
+
+Firebaseで作成した`GoogleService-Info.plist`を`SupportingFiles`配下へ配置
