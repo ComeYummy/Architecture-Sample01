@@ -19,6 +19,7 @@
 		C572A81323C9BC5000C990AF /* ArchitectureSample01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A81223C9BC5000C990AF /* ArchitectureSample01Tests.swift */; };
 		C572A81E23C9BC5000C990AF /* ArchitectureSample01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A81D23C9BC5000C990AF /* ArchitectureSample01UITests.swift */; };
 		C572A82E23C9E88800C990AF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A82D23C9E88800C990AF /* R.generated.swift */; };
+		C572A83323C9EFFE00C990AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		C572A81D23C9BC5000C990AF /* ArchitectureSample01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureSample01UITests.swift; sourceTree = "<group>"; };
 		C572A81F23C9BC5000C990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C572A82D23C9E88800C990AF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB59F48FDA93E95E9F10D457 /* Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01-ArchitectureSample01UITests/Pods-ArchitectureSample01-ArchitectureSample01UITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB6F006042944A08A50C7164 /* Pods-ArchitectureSample01Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01Tests.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01Tests/Pods-ArchitectureSample01Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EC178E7EB30147CDBE55328C /* Pods-ArchitectureSample01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.release.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				C572A80423C9BC5000C990AF /* Assets.xcassets */,
 				C572A80923C9BC5000C990AF /* Info.plist */,
+				C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */,
 				C572A82D23C9E88800C990AF /* R.generated.swift */,
 			);
 			path = SupportingFiles;
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C572A80823C9BC5000C990AF /* LaunchScreen.storyboard in Resources */,
+				C572A83323C9EFFE00C990AF /* GoogleService-Info.plist in Resources */,
 				C572A80523C9BC5000C990AF /* Assets.xcassets in Resources */,
 				C572A80323C9BC4F00C990AF /* Main.storyboard in Resources */,
 			);
