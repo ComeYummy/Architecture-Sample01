@@ -42,9 +42,6 @@
                                 <state key="normal" title="Post">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="postButtonTappedWithSender:" destination="y8p-HV-fd6" eventType="touchUpInside" id="Nu4-CV-wfZ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOx-cb-Up1">
                                 <rect key="frame" x="16" y="44" width="40" height="40"/>
@@ -53,9 +50,6 @@
                                     <constraint firstAttribute="height" constant="40" id="y5J-b0-bP2"/>
                                 </constraints>
                                 <state key="normal" image="multiply" catalog="system"/>
-                                <connections>
-                                    <action selector="dismissButtonTapped:" destination="y8p-HV-fd6" eventType="touchUpInside" id="cFT-eF-08v"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -75,7 +69,8 @@
                         <viewLayoutGuide key="safeArea" id="1GX-pC-e2t"/>
                     </view>
                     <connections>
-                        <outlet property="dismissButton" destination="JOx-cb-Up1" id="NFy-E8-QJO"/>
+                        <outlet property="dismissButton" destination="JOx-cb-Up1" id="qcp-uD-ofp"/>
+                        <outlet property="postButton" destination="tf9-x6-z3o" id="zFc-Zk-lXJ"/>
                         <outlet property="postTextField" destination="SqZ-4A-VfP" id="chv-Jh-Jlk"/>
                     </connections>
                 </viewController>

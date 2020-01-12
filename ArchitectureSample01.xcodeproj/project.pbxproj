@@ -12,11 +12,20 @@
 		3F636AF36F7BFA5CCF7129E5 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3971CEEFD599D80B1B94ED3 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework */; };
 		C5723FE323CB060400156278 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE223CB060400156278 /* PostModel.swift */; };
 		C5723FE523CB06D800156278 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE423CB06D800156278 /* AuthModel.swift */; };
-		C5723FE723CB076300156278 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE623CB076300156278 /* ListModel.swift */; };
-		C5723FEB23CB1BBF00156278 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FEA23CB1BBF00156278 /* PostPresenter.swift */; };
-		C5723FED23CB1C6600156278 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FEC23CB1C6600156278 /* ListPresenter.swift */; };
-		C5723FEF23CB1E3500156278 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FEE23CB1E3500156278 /* LoginPresenter.swift */; };
-		C5723FF123CB1E6000156278 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF023CB1E6000156278 /* SignUpPresenter.swift */; };
+		C5723FF423CB447C00156278 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF323CB447C00156278 /* Exception.swift */; };
+		C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF523CB44C700156278 /* ActivityIndicator.swift */; };
+		C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF723CB44FA00156278 /* ErrorTracker.swift */; };
+		C5723FFA23CB451000156278 /* ArrayTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF923CB451000156278 /* ArrayTracker.swift */; };
+		C5723FFC23CB453500156278 /* Observable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FFB23CB453500156278 /* Observable+Rx.swift */; };
+		C5723FFF23CB45BB00156278 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FFE23CB45BB00156278 /* ViewModelType.swift */; };
+		C572400123CB45EB00156278 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400023CB45EB00156278 /* SignUpViewModel.swift */; };
+		C572400323CB464500156278 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400223CB464500156278 /* LoginViewModel.swift */; };
+		C572400523CB466000156278 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400423CB466000156278 /* ListViewModel.swift */; };
+		C572400723CB468200156278 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400623CB468200156278 /* PostViewModel.swift */; };
+		C572400A23CB4BE700156278 /* ListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400923CB4BE700156278 /* ListNavigator.swift */; };
+		C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400B23CB4BFE00156278 /* SignUpNavigator.swift */; };
+		C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400D23CB4C1400156278 /* LoginNavigator.swift */; };
+		C572401023CB4C2800156278 /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400F23CB4C2800156278 /* PostNavigator.swift */; };
 		C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */; };
 		C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */; };
 		C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */; };
@@ -65,11 +74,20 @@
 		B597D27AF515E71AC7DD2796 /* Pods-ArchitectureSample01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.debug.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.debug.xcconfig"; sourceTree = "<group>"; };
 		C5723FE223CB060400156278 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		C5723FE423CB06D800156278 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		C5723FE623CB076300156278 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
-		C5723FEA23CB1BBF00156278 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
-		C5723FEC23CB1C6600156278 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
-		C5723FEE23CB1E3500156278 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		C5723FF023CB1E6000156278 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		C5723FF323CB447C00156278 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
+		C5723FF523CB44C700156278 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		C5723FF723CB44FA00156278 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		C5723FF923CB451000156278 /* ArrayTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTracker.swift; sourceTree = "<group>"; };
+		C5723FFB23CB453500156278 /* Observable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Rx.swift"; sourceTree = "<group>"; };
+		C5723FFE23CB45BB00156278 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		C572400023CB45EB00156278 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		C572400223CB464500156278 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C572400423CB466000156278 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		C572400623CB468200156278 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		C572400923CB4BE700156278 /* ListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNavigator.swift; sourceTree = "<group>"; };
+		C572400B23CB4BFE00156278 /* SignUpNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNavigator.swift; sourceTree = "<group>"; };
+		C572400D23CB4C1400156278 /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
+		C572400F23CB4C2800156278 /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
 		C572A7F823C9BC4F00C990AF /* ArchitectureSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -162,7 +180,6 @@
 			children = (
 				C5723FE223CB060400156278 /* PostModel.swift */,
 				C5723FE423CB06D800156278 /* AuthModel.swift */,
-				C5723FE623CB076300156278 /* ListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,15 +193,39 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		C5723FE923CB1BA500156278 /* Presenters */ = {
+		C5723FF223CB446B00156278 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C5723FEA23CB1BBF00156278 /* PostPresenter.swift */,
-				C5723FEC23CB1C6600156278 /* ListPresenter.swift */,
-				C5723FEE23CB1E3500156278 /* LoginPresenter.swift */,
-				C5723FF023CB1E6000156278 /* SignUpPresenter.swift */,
+				C5723FF323CB447C00156278 /* Exception.swift */,
+				C5723FF523CB44C700156278 /* ActivityIndicator.swift */,
+				C5723FF723CB44FA00156278 /* ErrorTracker.swift */,
+				C5723FF923CB451000156278 /* ArrayTracker.swift */,
+				C5723FFB23CB453500156278 /* Observable+Rx.swift */,
 			);
-			path = Presenters;
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C5723FFD23CB45A700156278 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C5723FFE23CB45BB00156278 /* ViewModelType.swift */,
+				C572400023CB45EB00156278 /* SignUpViewModel.swift */,
+				C572400223CB464500156278 /* LoginViewModel.swift */,
+				C572400423CB466000156278 /* ListViewModel.swift */,
+				C572400623CB468200156278 /* PostViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C572400823CB4BD400156278 /* Navigators */ = {
+			isa = PBXGroup;
+			children = (
+				C572400923CB4BE700156278 /* ListNavigator.swift */,
+				C572400B23CB4BFE00156278 /* SignUpNavigator.swift */,
+				C572400D23CB4C1400156278 /* LoginNavigator.swift */,
+				C572400F23CB4C2800156278 /* PostNavigator.swift */,
+			);
+			path = Navigators;
 			sourceTree = "<group>";
 		};
 		C572A7EF23C9BC4F00C990AF = {
@@ -212,7 +253,9 @@
 		C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */ = {
 			isa = PBXGroup;
 			children = (
-				C5723FE923CB1BA500156278 /* Presenters */,
+				C572400823CB4BD400156278 /* Navigators */,
+				C5723FF223CB446B00156278 /* Utilities */,
+				C5723FFD23CB45A700156278 /* ViewModels */,
 				C5723FE123CB05E400156278 /* Models */,
 				C5723FE023CB05D800156278 /* ViewControllers */,
 				C572A83923CA18A900C990AF /* AppDelegate */,
@@ -576,24 +619,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5723FF123CB1E6000156278 /* SignUpPresenter.swift in Sources */,
+				C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */,
 				C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */,
+				C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */,
 				C5723FE323CB060400156278 /* PostModel.swift in Sources */,
-				C5723FED23CB1C6600156278 /* ListPresenter.swift in Sources */,
+				C5723FF423CB447C00156278 /* Exception.swift in Sources */,
 				C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */,
 				C5723FE523CB06D800156278 /* AuthModel.swift in Sources */,
 				C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */,
-				C5723FEB23CB1BBF00156278 /* PostPresenter.swift in Sources */,
+				C572400123CB45EB00156278 /* SignUpViewModel.swift in Sources */,
 				C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */,
+				C5723FFF23CB45BB00156278 /* ViewModelType.swift in Sources */,
+				C572400323CB464500156278 /* LoginViewModel.swift in Sources */,
+				C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */,
 				C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */,
-				C5723FEF23CB1E3500156278 /* LoginPresenter.swift in Sources */,
+				C572400723CB468200156278 /* PostViewModel.swift in Sources */,
 				C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */,
 				C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */,
+				C5723FFA23CB451000156278 /* ArrayTracker.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
 				C572A83723CA05A100C990AF /* LogInViewController.swift in Sources */,
-				C5723FE723CB076300156278 /* ListModel.swift in Sources */,
 				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
+				C572400523CB466000156278 /* ListViewModel.swift in Sources */,
 				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
+				C572400A23CB4BE700156278 /* ListNavigator.swift in Sources */,
+				C572401023CB4C2800156278 /* PostNavigator.swift in Sources */,
+				C5723FFC23CB453500156278 /* Observable+Rx.swift in Sources */,
+				C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

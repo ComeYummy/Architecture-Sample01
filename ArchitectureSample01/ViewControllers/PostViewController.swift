@@ -7,40 +7,29 @@
 //
 
 import Firebase
+import RxSwift
+import RxCocoa
 import UIKit
 
-protocol PostViewInterface: class {
-    func toList()
-}
-
-class PostViewController: UIViewController, PostViewInterface {
+class PostViewController: UIViewController {
 
     @IBOutlet weak var postTextField: UITextField!
+    @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
 
-    var presenter: PostPresenter!
+    var postViewModel: PostViewModel!
+
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializePresenter()
+        initializeViewModel()
+        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if let post = presenter.selectedPost {
-            postTextField.text = post.content
-        }
-    }
-
-    @IBAction private func postButtonTapped(sender: UIButton) {
-        guard let content = postTextField.text else { return }
-        presenter.post(content)
-    }
-
-    @IBAction private func dismissButtonTapped(_ sender: Any) {
-        presenter.dismiss()
     }
 
     private func initializeUI() {
@@ -49,8 +38,23 @@ class PostViewController: UIViewController, PostViewInterface {
         dismissButton.setImage(image, for: .normal)
     }
 
-    private func initializePresenter() {
-        if presenter == nil { presenter = PostPresenter(with: self) }
+    func initializeViewModel(with selectedPost: Post? = nil) {
+        guard postViewModel == nil else { return }
+        postViewModel = PostViewModel(with: PostModel(),
+                                      and: PostNavigator(with: self),
+                                      and: selectedPost)
+    }
+
+    func bindViewModel() {
+        let input = PostViewModel.Input(postTrigger: postButton.rx.tap.asDriver(),
+                                        content: postTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: ""),
+                                        dismissTrigger: dismissButton.rx.tap.asDriver())
+        let output = postViewModel.transform(input: input)
+        output.post.drive().disposed(by: disposeBag)
+        output.dismiss.drive().disposed(by: disposeBag)
+        output.defaultPost.map { $0?.content }.drive(postTextField.rx.text).disposed(by: disposeBag)
     }
 
     func toList() {

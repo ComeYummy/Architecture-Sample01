@@ -7,45 +7,36 @@
 //
 
 import Firebase
-import UIKit
+import RxSwift
+import RxCocoa
 
-protocol SignUpViewInterface: class {
-    var email: String? { get }
-    var password: String? { get }
-    func toList()
-    func toLogin()
-}
-
-class SignUpViewController: UIViewController, SignUpViewInterface {
+class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
 
-    var presenter: SignUpPresenter!
+    var signUpViewModel: SignUpViewModel!
 
-    var email: String? {
-        return self.emailTextField.text
-    }
-    var password: String? {
-        return self.passwordTextField.text
-    }
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureView()
-        initializePresenter()
+        initializeViewModel()
+        bindViewModel()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        presenter.viewWillAppear()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        presenter.viewWillAppear()
+//    }
 
     private func configureNavigation() {
         title = "SignUp"
         navigationItem.removeBackBarButtonTitle()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogIn", style: .plain, target: self, action: #selector(self.logInButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogIn", style: .plain, target: self, action: nil)
     }
 
     private func configureView() {
@@ -57,27 +48,27 @@ class SignUpViewController: UIViewController, SignUpViewInterface {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializePresenter() {
-        presenter = SignUpPresenter(with: self)
-     }
-
-    @IBAction private func signUpButtonTapped(_ sender: Any) {
-        presenter.signUpButtonTapped()
+    func initializeViewModel() {
+        signUpViewModel = SignUpViewModel.init(with: AuthModel(),
+                                               and: SignUpNavigator(with: self))
     }
 
-    @objc
-    private func logInButtonTapped() {
-        presenter.loginButtonTapped()
-    }
-
-    func toLogin() {
-        guard let vc = R.storyboard.logInViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func toList() {
-        guard let vc = R.storyboard.listViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: false)
+    func bindViewModel() {
+        let input = SignUpViewModel.Input(checkLoginTrigger: rx.sentMessage(#selector(viewWillAppear(_:)))
+            .map { _ in () }
+            .asDriver(onErrorJustReturn: ()),
+                                          loginTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver(),
+                                          signUpTrigger: signUpButton.rx.tap.asDriver(),
+                                          email: emailTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: ""),
+                                          password: passwordTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let output = signUpViewModel.transform(input: input)
+        output.checkLogin.drive().disposed(by: disposeBag)
+        output.login.drive().disposed(by: disposeBag)
+        output.signUp.drive().disposed(by: disposeBag)
     }
 }
 

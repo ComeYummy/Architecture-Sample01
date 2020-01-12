@@ -41,9 +41,6 @@
                                 <state key="normal" title="LogIn">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="logInButtonTapped:" destination="Y8b-qe-lMl" eventType="touchUpInside" id="6eA-mU-UW0"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sms" translatesAutoresizingMaskIntoConstraints="NO" id="3aY-ju-VQ7">
                                 <rect key="frame" x="107" y="116" width="200" height="200"/>
@@ -71,6 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="gZr-PM-DkB" id="cuG-6Q-DZb"/>
+                        <outlet property="loginButton" destination="w41-gw-TkI" id="luX-As-2lX"/>
                         <outlet property="passwordTextField" destination="II1-70-0B4" id="jbW-DM-cfc"/>
                     </connections>
                 </viewController>

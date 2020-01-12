@@ -27,9 +27,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="mgc-kD-Gpa" eventType="touchUpInside" id="2Rd-7L-MzN"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

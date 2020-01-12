@@ -7,52 +7,36 @@
 //
 
 import Firebase
+import RxSwift
+import RxCocoa
 import UIKit
 
-protocol ListViewInterface: class {
-    func reloadData()
-    func toPost()
-    func toBack()
-}
-
-class ListViewController: UIViewController, ListViewInterface {
+class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
 
-    var presenter: ListPresenter!
+    var listViewModel: ListViewModel!
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         initializeTableView()
         initializeUI()
-        initializePresenter()
-        presenter.loadPosts()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter.viewWillAppear()
-    }
-
-    @IBAction private func addButtonTapped(_ sender: Any) {
-        presenter.addButtonTapped()
+        initializeViewModel()
+        bindViewModel()
     }
 
     private func configureNavigation() {
         navigationItem.title = "ToDoList"
         navigationItem.removeBackBarButtonTitle()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(self.logOut))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: nil)
     }
 
     private func initializeTableView() {
         tableView.register(R.nib.listTableViewCell)
-
-        tableView.delegate = self
-        tableView.dataSource = self
-
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableView.automaticDimension
     }
@@ -63,63 +47,32 @@ class ListViewController: UIViewController, ListViewInterface {
         addButton.tintColor = UIColor.white
     }
 
-    func initializePresenter() {
-        presenter = ListPresenter(with: self)
+    func initializeViewModel() {
+        listViewModel = ListViewModel(
+            with: PostModel(), authModel: AuthModel(),
+            and: ListNavigator(with: self)
+        )
     }
 
-    func reloadData() {
-        tableView.reloadData()
-    }
+    func bindViewModel() {
 
-    func toPost() {
-        guard let vc = R.storyboard.postViewController.instantiateInitialViewController() else { return }
-        if let snap = presenter.selectedSnapshot {
-            let postPresenter = PostPresenter(with: vc, and: Post(
-                    id: snap.documentID,
-                    user: snap["user"] as! String,
-                    content: snap["content"] as! String,
-                    date: (snap["date"] as! Timestamp).dateValue()
-                )
-            )
-            vc.presenter = postPresenter
-        }
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-    }
+        let input = ListViewModel.Input(trigger: Driver.just(()),
+                                        postTrigger: addButton.rx.tap.asDriver(),
+                                        selectTrigger: tableView.rx.itemSelected.asDriver().map { $0.row },
+                                        deleteTrigger: tableView.rx.itemDeleted.asDriver().map { $0.row },
+                                        logOutTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver()
+        )
+        let output = listViewModel.transform(input: input)
 
-    @objc
-    private func logOut() {
-        presenter.logOut()
-    }
-
-    func toBack() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.contentArray.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.listTableViewCell, for: indexPath) else { return UITableViewCell() }
-
-        let content = presenter.contentArray[indexPath.row]
-        let date = content["date"] as! Timestamp
-        cell.setCellData(date: date.dateValue(), content: String(describing: content["content"] ?? ""))
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.select(at: indexPath.row)
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            presenter.delete(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
-        }
+        output.posts
+            .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
+                cell.setCellData(date: element.date, content: element.content)
+            }
+            .disposed(by: disposeBag)
+        output.load.drive().disposed(by: disposeBag)
+        output.select.drive().disposed(by: disposeBag)
+        output.delete.drive().disposed(by: disposeBag)
+        output.toPost.drive().disposed(by: disposeBag)
+        output.logOut.drive().disposed(by: disposeBag)
     }
 }

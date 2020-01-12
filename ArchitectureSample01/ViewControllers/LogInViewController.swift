@@ -8,34 +8,25 @@
 
 import Firebase
 import FontAwesome_swift
+import RxSwift
+import RxCocoa
 import UIKit
 
-protocol LoginViewInterface: class {
-    var email: String? { get }
-    var password: String? { get }
-    func toList()
-    func presentValidateAlert()
-}
-
-class LogInViewController: UIViewController, LoginViewInterface {
+class LogInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
 
-    var presenter: LoginPresenter!
+    var loginViewModel: LoginViewModel!
 
-    var email: String? {
-        return emailTextField.text
-    }
-    var password: String? {
-        return passwordTextField.text
-    }
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
-        initializeUI()
-        initializePresenter()
+        initializeViewModel()
+        bindViewModel()
     }
 
     private func configureNavigation() {
@@ -52,23 +43,33 @@ class LogInViewController: UIViewController, LoginViewInterface {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializePresenter() {
-        presenter = LoginPresenter(with: self)
+    func initializeViewModel() {
+        loginViewModel = LoginViewModel(with: AuthModel(),
+                                        and: LoginNavigator(with: self))
     }
 
-    @IBAction private func logInButtonTapped(_ sender: Any) {
-        presenter.loginButtonTapped()
+    func bindViewModel() {
+        let input = LoginViewModel.Input(loginTrigger: loginButton.rx.tap.asDriver(),
+                                          email: emailTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: ""),
+                                          password: passwordTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let output = loginViewModel.transform(input: input)
+        output.login.drive(onNext: userWillLogin).disposed(by: disposeBag)
+    }
+
+    func userWillLogin(user: User) {
+        if !user.isEmailVerified {
+            presentValidateAlert()
+        }
     }
 
     func presentValidateAlert() {
         let alert = UIAlertController(title: "error", message: "メール認証を行ってください", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-
-    func toList() {
-        guard let vc = R.storyboard.listViewController.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
