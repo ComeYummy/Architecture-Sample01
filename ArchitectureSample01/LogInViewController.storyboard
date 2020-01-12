@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LogIn-->
+        <!--Log In View Controller-->
         <scene sceneID="WDE-Pf-Ajw">
             <objects>
                 <viewController id="Y8b-qe-lMl" customClass="LogInViewController" customModule="ArchitectureSample01" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="No2-gA-nKT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="LogIn" id="ZCg-W2-sg0"/>
                     <connections>
                         <outlet property="emailTextField" destination="gZr-PM-DkB" id="cuG-6Q-DZb"/>
                         <outlet property="passwordTextField" destination="II1-70-0B4" id="jbW-DM-cfc"/>

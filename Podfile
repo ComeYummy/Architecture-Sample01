@@ -23,6 +23,7 @@ target 'ArchitectureSample01' do
   pod 'R.swift'
 
   pod 'IQKeyboardManagerSwift'
+  pod 'FontAwesome.swift'
 
   target 'ArchitectureSample01Tests' do
     inherit! :search_paths

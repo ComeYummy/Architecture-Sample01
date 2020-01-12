@@ -37,6 +37,7 @@ class ListViewController: UIViewController {
     private func configureNavigation() {
         navigationItem.title = "ToDoList"
         navigationItem.removeBackBarButtonTitle()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(self.logOut))
         navigationItem.rightBarButtonItem?.setTitleTextAttributes(Appearance.textAttributes(17, color: UIColor.systemYellow), for: .normal)
     }
@@ -117,7 +118,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
         let content = contentArray[indexPath.row]
         let date = content["date"] as! Timestamp
-        cell.setCellData(date: date.dateValue(), content: String(describing: content["content"]!))
+        cell.setCellData(date: date.dateValue(), content: String(describing: content["content"] ?? ""))
         return cell
     }
 

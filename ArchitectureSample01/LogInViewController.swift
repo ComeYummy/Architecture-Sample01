@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import FontAwesome_swift
 import UIKit
 
 class LogInViewController: UIViewController {
@@ -16,7 +17,13 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigation()
         initializeUI()
+    }
+
+    private func configureNavigation() {
+        navigationItem.title = "LogIn"
+        navigationItem.removeBackBarButtonTitle()
     }
 
     private func initializeUI() {
@@ -30,6 +37,11 @@ class LogInViewController: UIViewController {
 
     @IBAction private func logInButtonTapped(_ sender: Any) {
         logIn()
+    }
+
+    @objc
+    private func back() {
+        navigationController?.popViewController(animated: true)
     }
 
     private func logIn() {

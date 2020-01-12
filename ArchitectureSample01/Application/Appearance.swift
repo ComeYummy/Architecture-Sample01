@@ -6,18 +6,19 @@
 //  Copyright © 2020 Naoki Kameyama. All rights reserved.
 //
 
+import FontAwesome_swift
 import UIKit
 
 struct Appearance {
 
-    static let navigationBarTintColor = UIColor.customBlack
+    static let navigationBarTintColor = UIColor.systemYellow
     static let navigationBarTitleColor = UIColor.customBlack
     static let navigationBarBarTintColor = UIColor.white
 
-    static let normalColor = UIColor.customBlack
+    static let normalColor = UIColor.systemYellow
     static let highLightedAlpha: CGFloat = 0.5
     static let disabledAlpha: CGFloat = 0.5
-    static let highlightedColor = UIColor.customBlack.withAlphaComponent(highLightedAlpha)
+    static let highlightedColor = UIColor.systemYellow.withAlphaComponent(highLightedAlpha)
     static let disabledColor = UIColor.customBlack.withAlphaComponent(disabledAlpha)
 
     static func setup() {
@@ -25,17 +26,13 @@ struct Appearance {
         UITabBar.appearance().tintColor = .customBlack
 
         // navbar
-        //        let backImage = UIImage.VALU.Navigation.back
-        //        UIGraphicsBeginImageContextWithOptions(CGSize(width: backImage.size.width + 10, height: backImage.size.height), false, UIScreen.main.scale)
-        //        backImage.draw(at: CGPoint(x: 10, y: 0))
-        //        let newBackImage = UIGraphicsGetImageFromCurrentImageContext()
-        //        UIGraphicsEndImageContext()
-        //        UINavigationBar.appearance().backIndicatorImage = newBackImage
-        //        UINavigationBar.appearance().backIndicatorTransitionMaskImage = newBackImage
+        let backImage = UIImage.fontAwesomeIcon(name: .arrowLeft, style: .solid, textColor: .customBlack, size: CGSize(width: 32, height: 32))
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().tintColor = navigationBarTintColor
-        UINavigationBar.appearance().barTintColor = navigationBarBarTintColor
-        UINavigationBar.appearance().titleTextAttributes = textAttributes(UIFont.systemFont(ofSize: 16), color: navigationBarTitleColor)
+        UINavigationBar.appearance().tintColor = navigationBarTintColor // ナビゲーションバーのアイテムの色
+        UINavigationBar.appearance().barTintColor = navigationBarBarTintColor // ナビゲーションバーの背景色
+        UINavigationBar.appearance().titleTextAttributes = textAttributes(UIFont.systemFont(ofSize: 17), color: navigationBarTitleColor) // title文字の色
 
         // bar button item
         UIBarButtonItem.appearance().setTitleTextAttributes(textAttributes(17, color: normalColor), for: .normal)
@@ -43,8 +40,8 @@ struct Appearance {
         UIBarButtonItem.appearance().setTitleTextAttributes(textAttributes(17, color: disabledColor), for: .disabled)
 
         // textview
-        UITextView.appearance().tintColor = UIColor.theme
-        UITextField.appearance().tintColor = UIColor.theme
+        UITextView.appearance().tintColor = UIColor.systemYellow
+        UITextField.appearance().tintColor = UIColor.systemYellow
 
     }
 

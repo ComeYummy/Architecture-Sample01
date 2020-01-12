@@ -27,7 +27,7 @@ class SignUpViewController: UIViewController {
 
     private func configureNavigation() {
         title = "SignUp"
-        //        navigationItem.removeBackBarButtonTitle()
+        navigationItem.removeBackBarButtonTitle()
         //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LOGIN", style: .plain, target: self, action: #selector(toLogin))
     }
 
