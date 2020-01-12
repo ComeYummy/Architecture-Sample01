@@ -59,7 +59,7 @@ class ListViewController: UIViewController {
 
     private func read() {
         listner = db.collection("posts").order(by: "date")
-            .addSnapshotListener(includeMetadataChanges: true) { [unowned self] snapshot, error in
+            .addSnapshotListener(includeMetadataChanges: true) { [weak self] snapshot, error in
                 guard let snap = snapshot else {
                     print("Error fetching document: \(String(describing: error))")
                     return
@@ -68,7 +68,7 @@ class ListViewController: UIViewController {
                     print("New data: \(diff.document.data())")
                 }
                 print("Current data: \(snap)")
-                self.reload(with: snap)
+                self?.reload(with: snap)
             }
     }
 

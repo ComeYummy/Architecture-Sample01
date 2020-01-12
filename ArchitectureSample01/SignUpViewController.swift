@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController {
                 print(error.localizedDescription)
                 return
             }
-            authResult?.user.sendEmailVerification { [unowned self] error in
+            authResult?.user.sendEmailVerification { [weak self] error in
                 if let error = error {
                     let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

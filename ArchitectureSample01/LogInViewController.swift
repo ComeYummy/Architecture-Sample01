@@ -36,11 +36,11 @@ class LogInViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
 
-        Auth.auth().signIn(withEmail: email, password: password) { [unowned self] authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             if let error = error {
                 let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
                 print(error.localizedDescription)
                 return
             }
@@ -48,9 +48,9 @@ class LogInViewController: UIViewController {
             guard let loginUser = authResult?.user else { return }
 
             if loginUser.isEmailVerified {
-                self.toList()
+                self?.toList()
             } else {
-                self.presentValidateAlert()
+                self?.presentValidateAlert()
             }
         }
     }

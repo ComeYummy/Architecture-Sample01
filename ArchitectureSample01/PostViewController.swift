@@ -49,16 +49,16 @@ class PostViewController: UIViewController {
             "user": (Auth.auth().currentUser?.uid)!,
             "content": text,
             "date": Date()
-        ]) { [unowned self] error in
+        ]) { [weak self] error in
             if let error = error {
                 let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
                 print("Error adding document: \(error)")
                 return
             }
             print("Document added")
-            self.dismiss(animated: true)
+            self?.dismiss(animated: true)
         }
     }
 
@@ -66,16 +66,16 @@ class PostViewController: UIViewController {
         db.collection("posts").document(selectedSnapshot!.documentID).updateData([
             "content": self.postTextField.text!,
             "date": Date()
-        ]) { [unowned self] error in
+        ]) { [weak self] error in
             if let error = error {
                 let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
                 print("Error adding document: \(error)")
                 return
             }
             print("Document updated")
-            self.dismiss(animated: true)
+            self?.dismiss(animated: true)
         }
     }
 
