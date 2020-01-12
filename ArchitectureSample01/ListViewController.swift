@@ -83,7 +83,6 @@ class ListViewController: UIViewController {
             for item in snap.documents {
                 contentArray.append(item)
             }
-            print("!!!contentArray", contentArray)
             self.tableView.reloadData()
         }
     }
