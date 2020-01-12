@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SignUp-->
+        <!--Sign Up View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="ArchitectureSample01" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,14 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SignUp" id="ggW-fv-wIt">
-                        <barButtonItem key="rightBarButtonItem" title="LogIn" id="nyz-E3-Vf1">
-                            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="logInButtonTapped:" destination="BYZ-38-t0r" id="czn-Ki-o4Z"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ggW-fv-wIt"/>
                     <connections>
                         <outlet property="emailTextField" destination="Ymy-gH-1Iw" id="tAg-VE-JLJ"/>
                         <outlet property="passwordTextField" destination="f3Q-Fz-8Zt" id="4BY-I1-bdr"/>

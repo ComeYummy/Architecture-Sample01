@@ -39,7 +39,6 @@ class ListViewController: UIViewController {
         navigationItem.removeBackBarButtonTitle()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(self.logOut))
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes(Appearance.textAttributes(17, color: UIColor.systemYellow), for: .normal)
     }
 
     private func initializeTableView() {

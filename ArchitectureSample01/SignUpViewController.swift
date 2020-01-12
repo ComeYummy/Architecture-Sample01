@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
     private func configureNavigation() {
         title = "SignUp"
         navigationItem.removeBackBarButtonTitle()
-        //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LOGIN", style: .plain, target: self, action: #selector(toLogin))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "LogIn", style: .plain, target: self, action: #selector(self.toLogIn))
     }
 
     private func configureView() {
@@ -44,12 +44,8 @@ class SignUpViewController: UIViewController {
         signUp()
     }
 
-    @IBAction private func logInButtonTapped(_ sender: Any) {
-        toLogin()
-    }
-
     @objc
-    private func toLogin() {
+    private func toLogIn() {
         guard let vc = R.storyboard.logInViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -79,7 +75,7 @@ class SignUpViewController: UIViewController {
                     print(error.localizedDescription)
                     return
                 }
-                self?.toLogin()
+                self?.toLogIn()
             }
         }
     }

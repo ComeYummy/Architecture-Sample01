@@ -21,7 +21,7 @@ struct Appearance {
     static let highlightedColor = UIColor.systemYellow.withAlphaComponent(highLightedAlpha)
     static let disabledColor = UIColor.customBlack.withAlphaComponent(disabledAlpha)
 
-    static func setup() {
+    static func initialSetup() {
         // tabbar
         UITabBar.appearance().tintColor = .customBlack
 

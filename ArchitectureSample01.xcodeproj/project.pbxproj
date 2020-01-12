@@ -154,16 +154,16 @@
 			children = (
 				C572A83923CA18A900C990AF /* AppDelegate */,
 				C572A83823CA189B00C990AF /* Application */,
-				C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */,
 				C572A80123C9BC4F00C990AF /* Main.storyboard */,
+				C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */,
 				C572A83423CA058900C990AF /* LogInViewController.storyboard */,
 				C572A83623CA05A100C990AF /* LogInViewController.swift */,
-				C572A83D23CA231D00C990AF /* ListViewController.swift */,
-				C572A84123CA25B400C990AF /* ListTableViewCell.swift */,
 				C572A83F23CA234300C990AF /* ListViewController.storyboard */,
+				C572A83D23CA231D00C990AF /* ListViewController.swift */,
 				C572A84323CA25C700C990AF /* ListTableViewCell.xib */,
-				C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */,
+				C572A84123CA25B400C990AF /* ListTableViewCell.swift */,
 				C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */,
+				C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */,
 				C572A82F23C9E97A00C990AF /* SupportingFiles */,
 			);
 			path = ArchitectureSample01;
