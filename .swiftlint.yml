@@ -103,6 +103,9 @@ opt_in_rules:
   - xct_specific_matcher
   - yoda_condition
 
+trailing_closure:
+  only_single_muted_parameter: true # .do(onNext: { })のtrailing_closureエラー除外
+
 # SwiftLintの適用から外すディレクトリ
 # (UnitTestやUITestもある場合は修正されますので入れます)
 excluded:

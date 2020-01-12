@@ -1,5 +1,5 @@
 //
-//  Observable+Rx.swift
+//  ObservableType+Rx.swift
 //  ArchitectureSample01
 //
 //  Created by Naoki Kameyama on 2020/01/12.
@@ -10,36 +10,36 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-extension ObservableType where E == Bool {
+extension ObservableType where Element == Bool {
     /// Boolean not operator
     public func not() -> Observable<Bool> {
-        return self.map(!)
+        self.map(!)
     }
 
 }
 
 extension SharedSequenceConvertibleType {
     func mapToVoid() -> SharedSequence<SharingStrategy, Void> {
-        return map { _ in }
+        map { _ in }
     }
 }
 
 extension ObservableType {
 
-    func catchErrorJustComplete() -> Observable<E> {
-        return catchError { _ in
-            return Observable.empty()
+    func catchErrorJustComplete() -> Observable<Element> {
+        catchError { _ in
+            Observable.empty()
         }
     }
 
-    func asDriverOnErrorJustComplete() -> Driver<E> {
-        return asDriver { error in
+    func asDriverOnErrorJustComplete() -> Driver<Element> {
+        asDriver { _ in
 //            assertionFailure("Error \(error)")
-            return Driver.empty()
+            Driver.empty()
         }
     }
 
     func mapToVoid() -> Observable<Void> {
-        return map { _ in }
+        map { _ in }
     }
 }

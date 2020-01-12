@@ -48,19 +48,19 @@ class SignUpViewModel: ViewModelType {
                 return self.authModel.signUp(with: email, and: password)
                     .trackError(state.error)
                     .flatMapLatest { [unowned self] _ in
-                        return self.authModel.sendEmailVerification()
+                        self.authModel.sendEmailVerification()
                             .trackError(state.error)
                     }
                     .asDriverOnErrorJustComplete()
-        }
+            }
         let login = input.loginTrigger
             .do(onNext: { [unowned self] _ in self.navigator.toLogin() })
         let checkLogin = input.checkLoginTrigger
             .flatMapLatest { [unowned self] _ in
-                return self.authModel.checkLogin()
+                self.authModel.checkLogin()
                     .map { [unowned self] isLogin in
                         if isLogin { self.navigator.toList() }
-                }
+                    }
                 .trackError(state.error)
                 .asDriver(onErrorJustReturn: ())
             }

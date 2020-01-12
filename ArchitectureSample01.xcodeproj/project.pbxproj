@@ -16,7 +16,7 @@
 		C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF523CB44C700156278 /* ActivityIndicator.swift */; };
 		C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF723CB44FA00156278 /* ErrorTracker.swift */; };
 		C5723FFA23CB451000156278 /* ArrayTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF923CB451000156278 /* ArrayTracker.swift */; };
-		C5723FFC23CB453500156278 /* Observable+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FFB23CB453500156278 /* Observable+Rx.swift */; };
+		C5723FFC23CB453500156278 /* ObservableType+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FFB23CB453500156278 /* ObservableType+Rx.swift */; };
 		C5723FFF23CB45BB00156278 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FFE23CB45BB00156278 /* ViewModelType.swift */; };
 		C572400123CB45EB00156278 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400023CB45EB00156278 /* SignUpViewModel.swift */; };
 		C572400323CB464500156278 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400223CB464500156278 /* LoginViewModel.swift */; };
@@ -78,7 +78,7 @@
 		C5723FF523CB44C700156278 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C5723FF723CB44FA00156278 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		C5723FF923CB451000156278 /* ArrayTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTracker.swift; sourceTree = "<group>"; };
-		C5723FFB23CB453500156278 /* Observable+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Rx.swift"; sourceTree = "<group>"; };
+		C5723FFB23CB453500156278 /* ObservableType+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Rx.swift"; sourceTree = "<group>"; };
 		C5723FFE23CB45BB00156278 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		C572400023CB45EB00156278 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C572400223CB464500156278 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 				C5723FF523CB44C700156278 /* ActivityIndicator.swift */,
 				C5723FF723CB44FA00156278 /* ErrorTracker.swift */,
 				C5723FF923CB451000156278 /* ArrayTracker.swift */,
-				C5723FFB23CB453500156278 /* Observable+Rx.swift */,
+				C5723FFB23CB453500156278 /* ObservableType+Rx.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -644,7 +644,7 @@
 				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
 				C572400A23CB4BE700156278 /* ListNavigator.swift in Sources */,
 				C572401023CB4C2800156278 /* PostNavigator.swift in Sources */,
-				C5723FFC23CB453500156278 /* Observable+Rx.swift in Sources */,
+				C5723FFC23CB453500156278 /* ObservableType+Rx.swift in Sources */,
 				C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

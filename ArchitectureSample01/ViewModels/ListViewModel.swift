@@ -52,15 +52,18 @@ class ListViewModel: ViewModelType {
         let state = State()
         let load = input.trigger
             .flatMap { [unowned self] _ in
-                return self.postModel.read()
+                self.postModel.read()
                     .map { snap in
                         var posts: [Post] = []
                         if !snap.isEmpty {
                             for item in snap.documents {
-                                posts.append(Post(id: item.documentID,
-                                                  user: item["user"] as! String,
-                                                  content: item["content"] as! String,
-                                                  date: (item["date"] as! Timestamp).dateValue())
+                                posts.append(
+                                    Post(
+                                        id: item.documentID,
+                                        user: item["user"] as! String,
+                                        content: item["content"] as! String,
+                                        date: (item["date"] as! Timestamp).dateValue()
+                                    )
                                 )
                             }
                         }
@@ -69,18 +72,18 @@ class ListViewModel: ViewModelType {
                     .trackArray(state.contentArray)
                     .trackError(state.error)
                     .trackActivity(state.isLoading)
-                    .mapToVoid().debug()
+                    .mapToVoid()
                     .asDriverOnErrorJustComplete()
             }
         let select = input.selectTrigger
             .withLatestFrom(state.contentArray) { [unowned self] (index: Int, posts: [Post]) in
                 self.navigator.toPost(with: posts[index])
-        }
+            }
         let delete = input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                return self.postModel.delete(state.contentArray.array[index].id)
+                self.postModel.delete(state.contentArray.array[index].id)
                     .asDriver(onErrorJustReturn: ())
-        }
+            }
         let toPost = input.postTrigger
             .do(onNext: { [unowned self] _ in
                 self.navigator.toPost()

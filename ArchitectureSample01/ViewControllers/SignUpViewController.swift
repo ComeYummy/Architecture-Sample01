@@ -27,12 +27,6 @@ class SignUpViewController: UIViewController {
         bindViewModel()
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        presenter.viewWillAppear()
-//    }
-
     private func configureNavigation() {
         title = "SignUp"
         navigationItem.removeBackBarButtonTitle()
@@ -54,17 +48,19 @@ class SignUpViewController: UIViewController {
     }
 
     func bindViewModel() {
-        let input = SignUpViewModel.Input(checkLoginTrigger: rx.sentMessage(#selector(viewWillAppear(_:)))
-            .map { _ in () }
-            .asDriver(onErrorJustReturn: ()),
-                                          loginTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver(),
-                                          signUpTrigger: signUpButton.rx.tap.asDriver(),
-                                          email: emailTextField.rx.text
-                                            .map { if let t = $0 { return t } else { return "" } }
-                                            .asDriver(onErrorJustReturn: ""),
-                                          password: passwordTextField.rx.text
-                                            .map { if let t = $0 { return t } else { return "" } }
-                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let input = SignUpViewModel.Input(
+            checkLoginTrigger: rx.sentMessage(#selector(viewWillAppear(_:)))
+                .map { _ in () }
+                .asDriver(onErrorJustReturn: ()),
+            loginTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver(),
+            signUpTrigger: signUpButton.rx.tap.asDriver(),
+            email: emailTextField.rx.text
+                .map { if let t = $0 { return t } else { return "" } }
+                .asDriver(onErrorJustReturn: ""),
+            password: passwordTextField.rx.text
+                .map { if let t = $0 { return t } else { return "" } }
+                .asDriver(onErrorJustReturn: "").asDriver()
+        )
         let output = signUpViewModel.transform(input: input)
         output.checkLogin.drive().disposed(by: disposeBag)
         output.login.drive().disposed(by: disposeBag)

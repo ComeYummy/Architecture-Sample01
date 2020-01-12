@@ -65,7 +65,7 @@ class ListViewController: UIViewController {
         let output = listViewModel.transform(input: input)
 
         output.posts
-            .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
+            .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { _, element, cell in
                 cell.setCellData(date: element.date, content: element.content)
             }
             .disposed(by: disposeBag)

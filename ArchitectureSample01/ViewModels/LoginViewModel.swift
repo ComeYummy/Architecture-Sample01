@@ -42,7 +42,7 @@ class LoginViewModel: ViewModelType {
         let login = input.loginTrigger
             .withLatestFrom(requiredInputs)
             .flatMapLatest { [unowned self] (email: String, password: String) in
-                return self.authModel.login(with: email, and: password)
+                self.authModel.login(with: email, and: password)
                     .do(onNext: { [unowned self] user in
                         if user.isEmailVerified {
                             self.navigator.toList()
@@ -50,7 +50,7 @@ class LoginViewModel: ViewModelType {
                     })
                     .trackError(state.error)
                     .asDriverOnErrorJustComplete()
-        }
+            }
         return LoginViewModel.Output(login: login, error: state.error.asDriver())
     }
 }
