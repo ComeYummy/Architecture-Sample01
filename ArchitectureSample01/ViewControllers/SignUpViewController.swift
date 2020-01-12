@@ -13,16 +13,19 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    var authModel: AuthModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureView()
+        configureModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if isUserVerified() { toList() }
+        if authModel.isUserVerified() { toList() }
     }
 
     private func configureNavigation() {
@@ -38,6 +41,11 @@ class SignUpViewController: UIViewController {
         passwordTextField.delegate = self
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
+    }
+
+    private func configureModel() {
+        authModel = AuthModel()
+        authModel.delegate = self
     }
 
     @IBAction private func signUpButtonTapped(_ sender: Any) {
@@ -59,30 +67,24 @@ class SignUpViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
 
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alert, animated: true, completion: nil)
-                print(error.localizedDescription)
-                return
-            }
-            authResult?.user.sendEmailVerification { [weak self] error in
-                if let error = error {
-                    let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
-                    print(error.localizedDescription)
-                    return
-                }
-                self?.toLogIn()
-            }
-        }
+        authModel.signUp(with: email, and: password)
     }
 
     private func isUserVerified() -> Bool {
         guard let user = Auth.auth().currentUser else { return false }
         return user.isEmailVerified
+    }
+}
+
+extension SignUpViewController: AuthModelDelegate {
+    func didSignUp(newUser: User) {
+        authModel.sendEmailVerification(to: newUser)
+    }
+    func emailVerificationDidSend() {
+        toLogIn()
+    }
+    func errorDidOccur(error: Error) {
+        print(error.localizedDescription)
     }
 }
 

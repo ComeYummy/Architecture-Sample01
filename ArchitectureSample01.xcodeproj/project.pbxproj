@@ -10,6 +10,9 @@
 		1FA6E0495B1CEB42014B3D15 /* Pods_ArchitectureSample01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8CBFB18F27DB0771CD69CE /* Pods_ArchitectureSample01.framework */; };
 		27E9192D199AB1353E265866 /* Pods_ArchitectureSample01Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBEAB3F7B1F96149406DE20 /* Pods_ArchitectureSample01Tests.framework */; };
 		3F636AF36F7BFA5CCF7129E5 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3971CEEFD599D80B1B94ED3 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework */; };
+		C5723FE323CB060400156278 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE223CB060400156278 /* PostModel.swift */; };
+		C5723FE523CB06D800156278 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE423CB06D800156278 /* AuthModel.swift */; };
+		C5723FE723CB076300156278 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE623CB076300156278 /* ListModel.swift */; };
 		C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */; };
 		C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */; };
 		C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */; };
@@ -56,6 +59,9 @@
 		2CBEAB3F7B1F96149406DE20 /* Pods_ArchitectureSample01Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSample01Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8CBFB18F27DB0771CD69CE /* Pods_ArchitectureSample01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSample01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597D27AF515E71AC7DD2796 /* Pods-ArchitectureSample01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.debug.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.debug.xcconfig"; sourceTree = "<group>"; };
+		C5723FE223CB060400156278 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		C5723FE423CB06D800156278 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		C5723FE623CB076300156278 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		C572A7F823C9BC4F00C990AF /* ArchitectureSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +133,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C5723FE023CB05D800156278 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C572A80123C9BC4F00C990AF /* Main.storyboard */,
+				C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */,
+				C572A83423CA058900C990AF /* LogInViewController.storyboard */,
+				C572A83623CA05A100C990AF /* LogInViewController.swift */,
+				C572A83F23CA234300C990AF /* ListViewController.storyboard */,
+				C572A83D23CA231D00C990AF /* ListViewController.swift */,
+				C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */,
+				C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */,
+				C5723FE823CB081300156278 /* Cells */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C5723FE123CB05E400156278 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C5723FE223CB060400156278 /* PostModel.swift */,
+				C5723FE423CB06D800156278 /* AuthModel.swift */,
+				C5723FE623CB076300156278 /* ListModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C5723FE823CB081300156278 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C572A84323CA25C700C990AF /* ListTableViewCell.xib */,
+				C572A84123CA25B400C990AF /* ListTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		C572A7EF23C9BC4F00C990AF = {
 			isa = PBXGroup;
 			children = (
@@ -152,18 +193,10 @@
 		C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */ = {
 			isa = PBXGroup;
 			children = (
+				C5723FE123CB05E400156278 /* Models */,
+				C5723FE023CB05D800156278 /* ViewControllers */,
 				C572A83923CA18A900C990AF /* AppDelegate */,
 				C572A83823CA189B00C990AF /* Application */,
-				C572A80123C9BC4F00C990AF /* Main.storyboard */,
-				C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */,
-				C572A83423CA058900C990AF /* LogInViewController.storyboard */,
-				C572A83623CA05A100C990AF /* LogInViewController.swift */,
-				C572A83F23CA234300C990AF /* ListViewController.storyboard */,
-				C572A83D23CA231D00C990AF /* ListViewController.swift */,
-				C572A84323CA25C700C990AF /* ListTableViewCell.xib */,
-				C572A84123CA25B400C990AF /* ListTableViewCell.swift */,
-				C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */,
-				C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */,
 				C572A82F23C9E97A00C990AF /* SupportingFiles */,
 			);
 			path = ArchitectureSample01;
@@ -524,7 +557,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */,
+				C5723FE323CB060400156278 /* PostModel.swift in Sources */,
 				C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */,
+				C5723FE523CB06D800156278 /* AuthModel.swift in Sources */,
 				C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */,
 				C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */,
 				C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */,
@@ -532,6 +567,7 @@
 				C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
 				C572A83723CA05A100C990AF /* LogInViewController.swift in Sources */,
+				C5723FE723CB076300156278 /* ListModel.swift in Sources */,
 				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
 				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
 			);

@@ -15,10 +15,13 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    var authModel = AuthModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         initializeUI()
+        configureModel()
     }
 
     private func configureNavigation() {
@@ -35,6 +38,11 @@ class LogInViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
+    private func configureModel() {
+        authModel = AuthModel()
+        authModel.delegate = self
+    }
+
     @IBAction private func logInButtonTapped(_ sender: Any) {
         logIn()
     }
@@ -48,23 +56,7 @@ class LogInViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
 
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                let alert = UIAlertController(title: "error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alert, animated: true, completion: nil)
-                print(error.localizedDescription)
-                return
-            }
-
-            guard let loginUser = authResult?.user else { return }
-
-            if loginUser.isEmailVerified {
-                self?.toList()
-            } else {
-                self?.presentValidateAlert()
-            }
-        }
+        authModel.login(with: email, and: password)
     }
 
     private func presentValidateAlert() {
@@ -76,6 +68,19 @@ class LogInViewController: UIViewController {
     private func toList() {
         guard let vc = R.storyboard.listViewController.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension LogInViewController: AuthModelDelegate {
+    func didLogIn(isEmailVerified: Bool) {
+        if isEmailVerified {
+            self.toList()
+        } else {
+            self.presentValidateAlert()
+        }
+    }
+    func errorDidOccur(error: Error) {
+        print(error.localizedDescription)
     }
 }
 
