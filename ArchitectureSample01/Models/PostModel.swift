@@ -6,7 +6,6 @@
 //  Copyright © 2020 Naoki Kameyama. All rights reserved.
 //
 
-import Foundation
 import Firebase
 
 struct Post {
@@ -16,49 +15,60 @@ struct Post {
     var date: Date
 }
 
-protocol PostModelDelegate: class {
-    func didPost()
-    func errorDidOccur(error: Error)
+@objc protocol PostModelDelegate: class {
+    @objc optional func didPost(error: Error?)
+    @objc optional func snapshotDidChange(snapshot: QuerySnapshot)
 }
 
 class PostModel {
 
     let db: Firestore
 
-    let selectedPost: Post?
-
     weak var delegate: PostModelDelegate?
 
-    init(with selectedPost: Post? = nil) {
-        self.selectedPost = selectedPost
+    init() {
         self.db = Firestore.firestore()
         db.settings.isPersistenceEnabled = true
     }
 
-    func post(with content: String) {
-        if let post = selectedPost {
-            db.collection("posts").document(post.id).updateData([
-                "content": content,
-                "date": Date()
-            ]) { [unowned self] error in
-                if let error = error {
-                    self.delegate?.errorDidOccur(error: error)
-                    return
-                }
-                self.delegate?.didPost()
-            }
-        } else {
-            db.collection("posts").addDocument(data: [
-                "user": (Auth.auth().currentUser?.uid)!,
-                "content": content,
-                "date": Date()
-            ]) { [unowned self] error in
-                if let error = error {
-                    self.delegate?.errorDidOccur(error: error)
-                    return
-                }
-                self.delegate?.didPost()
-            }
+    func create(with content: String) {
+        db.collection("posts").addDocument(data: [
+            "user": (Auth.auth().currentUser?.uid)!,
+            "content": content,
+            "date": Date()
+        ]) { [unowned self] error in
+            self.delegate?.didPost?(error: error)
         }
+    }
+
+    func read() -> ListenerRegistration {
+        return db.collection("posts").order(by: "date")
+            .addSnapshotListener(includeMetadataChanges: true) { snapshot, error in
+            guard let snap = snapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            for diff in snap.documentChanges {
+                if diff.type == .added {
+                    print("New data: \(diff.document.data())")
+                }
+            }
+            print("Current data: \(snap)")
+            self.delegate?.snapshotDidChange?(snapshot: snap)
+        }
+    }
+
+    func update(_ post: Post) {
+        db.collection("posts").document(post.id).setData([
+            "user": post.user,
+            "content": post.content,
+            "date": post.date
+        ]) { [unowned self] error in
+            self.delegate?.didPost?(error: error)
+        }
+    }
+
+    func delete(_ documentID: String) {
+        db.collection("posts").document(documentID).delete()
     }
 }

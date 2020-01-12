@@ -13,7 +13,7 @@ import Firebase
     @objc optional func didLogIn(isEmailVerified: Bool)
     @objc optional func emailVerificationDidSend()
     @objc optional func didLogOut()
-    func errorDidOccur(error: Error)
+    @objc optional func errorDidOccur(error: Error)
 }
 
 class AuthModel {
@@ -22,7 +22,7 @@ class AuthModel {
     func signUp(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [unowned self] (authResult, error) in
             if let e = error {
-                self.delegate?.errorDidOccur(error: e)
+                self.delegate?.errorDidOccur?(error: e)
                 return
             }
             guard let user = authResult?.user else { return }
@@ -33,7 +33,7 @@ class AuthModel {
     func sendEmailVerification(to user: User) {
         user.sendEmailVerification() { [unowned self] error in
             if let e = error {
-                self.delegate?.errorDidOccur(error: e)
+                self.delegate?.errorDidOccur?(error: e)
                 return
             }
             self.delegate?.emailVerificationDidSend?()
@@ -43,7 +43,7 @@ class AuthModel {
     func login(with email: String, and password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [unowned self] (authResult, error) in
             if let e = error {
-                self.delegate?.errorDidOccur(error: e)
+                self.delegate?.errorDidOccur?(error: e)
                 return
             }
             guard let loginUser = authResult?.user else { return }

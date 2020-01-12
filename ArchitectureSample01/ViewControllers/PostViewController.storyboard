@@ -46,15 +46,28 @@
                                     <action selector="postButtonTappedWithSender:" destination="y8p-HV-fd6" eventType="touchUpInside" id="Nu4-CV-wfZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOx-cb-Up1">
+                                <rect key="frame" x="16" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="SSE-ax-P9m"/>
+                                    <constraint firstAttribute="height" constant="40" id="y5J-b0-bP2"/>
+                                </constraints>
+                                <state key="normal" image="multiply" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="y8p-HV-fd6" eventType="touchUpInside" id="cFT-eF-08v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="JOx-cb-Up1" firstAttribute="leading" secondItem="1GX-pC-e2t" secondAttribute="leading" constant="16" id="0w7-HH-lTC"/>
                             <constraint firstItem="1GX-pC-e2t" firstAttribute="trailing" secondItem="SqZ-4A-VfP" secondAttribute="trailing" constant="48" id="Df5-tk-Hs2"/>
                             <constraint firstItem="bXl-z0-gFT" firstAttribute="width" secondItem="bXl-z0-gFT" secondAttribute="height" multiplier="1:1" id="Ijw-Wa-vNO"/>
                             <constraint firstItem="tf9-x6-z3o" firstAttribute="top" secondItem="SqZ-4A-VfP" secondAttribute="bottom" constant="80" id="StE-zo-86L"/>
                             <constraint firstItem="SqZ-4A-VfP" firstAttribute="top" secondItem="bXl-z0-gFT" secondAttribute="bottom" constant="88" id="Wne-QK-HQ2"/>
                             <constraint firstItem="bXl-z0-gFT" firstAttribute="top" secondItem="1GX-pC-e2t" secondAttribute="top" constant="96" id="a7p-eB-DvZ"/>
                             <constraint firstItem="tf9-x6-z3o" firstAttribute="leading" secondItem="1GX-pC-e2t" secondAttribute="leading" constant="48" id="e4S-jv-4nP"/>
+                            <constraint firstItem="JOx-cb-Up1" firstAttribute="top" secondItem="1GX-pC-e2t" secondAttribute="top" id="imN-FA-szX"/>
                             <constraint firstItem="1GX-pC-e2t" firstAttribute="trailing" secondItem="tf9-x6-z3o" secondAttribute="trailing" constant="48" id="qmN-GM-yku"/>
                             <constraint firstItem="SqZ-4A-VfP" firstAttribute="leading" secondItem="1GX-pC-e2t" secondAttribute="leading" constant="48" id="r8q-Lq-bzv"/>
                             <constraint firstItem="bXl-z0-gFT" firstAttribute="centerX" secondItem="GA3-Yu-kty" secondAttribute="centerX" id="vbx-qg-hoc"/>
@@ -62,16 +75,18 @@
                         <viewLayoutGuide key="safeArea" id="1GX-pC-e2t"/>
                     </view>
                     <connections>
+                        <outlet property="dismissButton" destination="JOx-cb-Up1" id="NFy-E8-QJO"/>
                         <outlet property="postTextField" destination="SqZ-4A-VfP" id="chv-Jh-Jlk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLz-Zb-PcW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Uc6-gs-x3y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="62" y="80"/>
+            <point key="canvasLocation" x="60.869565217391312" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
+        <image name="multiply" catalog="system" width="64" height="54"/>
         <image name="seo-and-web" width="512" height="512"/>
     </resources>
 </document>

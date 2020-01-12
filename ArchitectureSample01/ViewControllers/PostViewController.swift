@@ -9,50 +9,52 @@
 import Firebase
 import UIKit
 
-class PostViewController: UIViewController {
+protocol PostViewInterface: class {
+    func toList()
+}
+
+class PostViewController: UIViewController, PostViewInterface {
 
     @IBOutlet weak var postTextField: UITextField!
+    @IBOutlet weak var dismissButton: UIButton!
 
-    var postModel: PostModel!
+    var presenter: PostPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        configureModel()
+        initializePresenter()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let post = postModel.selectedPost {
+        if let post = presenter.selectedPost {
             postTextField.text = post.content
         }
     }
 
     @IBAction private func postButtonTapped(sender: UIButton) {
         guard let content = postTextField.text else { return }
-        postModel.post(with: content)
+        presenter.post(content)
+    }
+
+    @IBAction private func dismissButtonTapped(_ sender: Any) {
+        presenter.dismiss()
     }
 
     private func initializeUI() {
         postTextField.delegate = self
+        let image = UIImage.fontAwesomeIcon(name: .times, style: .solid, textColor: .customBlack, size: CGSize(width: 48, height: 48))
+        dismissButton.setImage(image, for: .normal)
     }
 
-    private func configureModel() {
-        if postModel == nil {
-            postModel = PostModel()
-        }
-        postModel.delegate = self
+    private func initializePresenter() {
+        if presenter == nil { presenter = PostPresenter(with: self) }
     }
-}
 
-extension PostViewController: PostModelDelegate {
-    func didPost() {
-        print("Document added")
+    func toList() {
         dismiss(animated: true)
-    }
-    func errorDidOccur(error: Error) {
-        print(error.localizedDescription)
     }
 }
 

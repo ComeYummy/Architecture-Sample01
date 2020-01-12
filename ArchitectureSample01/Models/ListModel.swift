@@ -14,7 +14,7 @@ protocol ListModelDelegate: class {
 }
 
 class ListModel {
-    
+
     let db: Firestore = Firestore.firestore()
 
     var contentArray: [DocumentSnapshot] = []

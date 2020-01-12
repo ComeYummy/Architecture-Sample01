@@ -9,24 +9,35 @@
 import Firebase
 import UIKit
 
-class ListViewController: UIViewController {
+protocol ListViewInterface: class {
+    func reloadData()
+    func toPost()
+    func toBack()
+}
+
+class ListViewController: UIViewController, ListViewInterface {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
 
-    let listModel = ListModel()
-    let authModel = AuthModel()
+    var presenter: ListPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         initializeTableView()
         initializeUI()
-        configureModel()
+        initializePresenter()
+        presenter.loadPosts()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
     }
 
     @IBAction private func addButtonTapped(_ sender: Any) {
-        self.toPost()
+        presenter.addButtonTapped()
     }
 
     private func configureNavigation() {
@@ -52,72 +63,62 @@ class ListViewController: UIViewController {
         addButton.tintColor = UIColor.white
     }
 
-    private func configureModel() {
-        listModel.delegate = self
-        authModel.delegate = self
-        listModel.read()
+    func initializePresenter() {
+        presenter = ListPresenter(with: self)
     }
 
-    private func toPost() {
+    func reloadData() {
+        tableView.reloadData()
+    }
+
+    func toPost() {
         guard let vc = R.storyboard.postViewController.instantiateInitialViewController() else { return }
-        if let snap = listModel.selectedSnapshot {
-            let postModel = PostModel(with:
-                Post(
+        if let snap = presenter.selectedSnapshot {
+            let postPresenter = PostPresenter(with: vc, and: Post(
                     id: snap.documentID,
                     user: snap["user"] as! String,
                     content: snap["content"] as! String,
                     date: (snap["date"] as! Timestamp).dateValue()
                 )
             )
-            vc.postModel = postModel
-            present(vc, animated: true, completion: nil)
+            vc.presenter = postPresenter
         }
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 
     @objc
     private func logOut() {
-        authModel.logOut()
+        presenter.logOut()
     }
-}
 
-extension ListViewController: AuthModelDelegate {
-    func didLogOut() {
+    func toBack() {
         navigationController?.popViewController(animated: true)
-    }
-}
-
-extension ListViewController: ListModelDelegate {
-    func listDidChange() {
-        tableView.reloadData()
-    }
-    func errorDidOccur(error: Error) {
-        print(error.localizedDescription)
     }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        listModel.contentArray.count
+        presenter.contentArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.listTableViewCell, for: indexPath) else { return UITableViewCell() }
 
-        let content = listModel.contentArray[indexPath.row]
+        let content = presenter.contentArray[indexPath.row]
         let date = content["date"] as! Timestamp
         cell.setCellData(date: date.dateValue(), content: String(describing: content["content"] ?? ""))
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        listModel.selectedSnapshot = listModel.contentArray[indexPath.row]
-        self.toPost()
+        presenter.select(at: indexPath.row)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            listModel.delete(at: indexPath.row)
+            presenter.delete(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
         }
     }
