@@ -49,7 +49,7 @@ class ListViewController: UIViewController {
 
     func initializeViewModel() {
         listViewModel = ListViewModel(
-            with: ListUseCase(with: FireBasePostRepository(), authRepository: FireBaseAuthRepository()),
+            with: ListUseCase(with: PostRepositoryImpl(), authRepository: AuthRepositoryImpl()),
             and: ListNavigator(with: self)
         )
     }

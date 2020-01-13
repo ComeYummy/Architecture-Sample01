@@ -1,5 +1,5 @@
 //
-//  FireBasePostRepository.swift
+//  FireBasePostService.swift
 //  ArchitectureSample01
 //
 //  Created by Naoki Kameyama on 2020/01/13.
@@ -9,16 +9,18 @@
 import Firebase
 import RxSwift
 
-class FireBasePostRepository: PostRepository {
+class FireBasePostService {
+
+    static let shared: FireBasePostService = FireBasePostService()
+
+    private init() {
+        self.db = Firestore.firestore()
+        db.settings.isPersistenceEnabled = true
+    }
 
     let db: Firestore
 
     var listener: ListenerRegistration?
-
-    init() {
-        self.db = Firestore.firestore()
-        db.settings.isPersistenceEnabled = true
-    }
 
     func create(with content: String) -> Observable<Void> {
         return Observable.create { [unowned self] observer in

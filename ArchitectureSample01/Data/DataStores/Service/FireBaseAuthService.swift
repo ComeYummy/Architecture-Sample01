@@ -1,5 +1,5 @@
 //
-//  FireBaseAuthRepository.swift
+//  FireBaseAuthService.swift
 //  ArchitectureSample01
 //
 //  Created by Naoki Kameyama on 2020/01/13.
@@ -9,7 +9,11 @@
 import Firebase
 import RxSwift
 
-class FireBaseAuthRepository: AuthRepository {
+class FireBaseAuthService {
+
+    static let shared: FireBaseAuthService = FireBaseAuthService()
+
+    private init() {}
 
     func checkLogin() -> Observable<Bool> {
         Observable.create { observer in

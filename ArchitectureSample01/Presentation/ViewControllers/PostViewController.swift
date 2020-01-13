@@ -40,7 +40,7 @@ class PostViewController: UIViewController {
 
     func initializeViewModel(with selectedPost: Post? = nil) {
         guard postViewModel == nil else { return }
-        postViewModel = PostViewModel(with: PostUseCase(with: FireBasePostRepository()),
+        postViewModel = PostViewModel(with: PostUseCase(with: PostRepositoryImpl()),
                                       and: PostNavigator(with: self),
                                       and: selectedPost)
     }

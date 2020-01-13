@@ -16,6 +16,7 @@ target 'ArchitectureSample01' do
 
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'RealmSwift'
+  pod 'KeychainAccess'
 
   pod 'RxSwift'
   pod 'RxCocoa'

@@ -24,8 +24,8 @@
 		C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400B23CB4BFE00156278 /* SignUpNavigator.swift */; };
 		C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400D23CB4C1400156278 /* LoginNavigator.swift */; };
 		C572401023CB4C2800156278 /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400F23CB4C2800156278 /* PostNavigator.swift */; };
-		C572401923CC109D00156278 /* FireBaseAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401823CC109D00156278 /* FireBaseAuthRepository.swift */; };
-		C572401B23CC10E800156278 /* FireBasePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401A23CC10E800156278 /* FireBasePostRepository.swift */; };
+		C572401923CC109D00156278 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401823CC109D00156278 /* AuthRepositoryImpl.swift */; };
+		C572401B23CC10E800156278 /* PostRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401A23CC10E800156278 /* PostRepositoryImpl.swift */; };
 		C572401D23CC112700156278 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401C23CC112700156278 /* PostRepository.swift */; };
 		C572401F23CC113C00156278 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401E23CC113C00156278 /* AuthRepository.swift */; };
 		C572402123CC115700156278 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402023CC115700156278 /* User.swift */; };
@@ -34,6 +34,10 @@
 		C572402723CC123C00156278 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402623CC123C00156278 /* LoginUseCase.swift */; };
 		C572402923CC126500156278 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402823CC126500156278 /* PostUseCase.swift */; };
 		C572402B23CC127600156278 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402A23CC127600156278 /* SignUpUseCase.swift */; };
+		C572403423CC986200156278 /* FireBaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403323CC986200156278 /* FireBaseAuthService.swift */; };
+		C572403623CC989300156278 /* FireBasePostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403523CC989300156278 /* FireBasePostService.swift */; };
+		C572403823CC9C2000156278 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403723CC9C2000156278 /* KeychainStorage.swift */; };
+		C572403A23CC9D3800156278 /* OnMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403923CC9D3800156278 /* OnMemoryStorage.swift */; };
 		C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */; };
 		C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */; };
 		C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */; };
@@ -94,8 +98,8 @@
 		C572400B23CB4BFE00156278 /* SignUpNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNavigator.swift; sourceTree = "<group>"; };
 		C572400D23CB4C1400156278 /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
 		C572400F23CB4C2800156278 /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
-		C572401823CC109D00156278 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
-		C572401A23CC10E800156278 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
+		C572401823CC109D00156278 /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		C572401A23CC10E800156278 /* PostRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryImpl.swift; sourceTree = "<group>"; };
 		C572401C23CC112700156278 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		C572401E23CC113C00156278 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		C572402023CC115700156278 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -104,6 +108,10 @@
 		C572402623CC123C00156278 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		C572402823CC126500156278 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
 		C572402A23CC127600156278 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		C572403323CC986200156278 /* FireBaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthService.swift; sourceTree = "<group>"; };
+		C572403523CC989300156278 /* FireBasePostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostService.swift; sourceTree = "<group>"; };
+		C572403723CC9C2000156278 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		C572403923CC9D3800156278 /* OnMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnMemoryStorage.swift; sourceTree = "<group>"; };
 		C572A7F823C9BC4F00C990AF /* ArchitectureSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -288,6 +296,7 @@
 		C572401623CC106F00156278 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C572402E23CC967000156278 /* DataStores */,
 				C572401723CC107A00156278 /* Repositories */,
 			);
 			path = Data;
@@ -296,10 +305,84 @@
 		C572401723CC107A00156278 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				C572401823CC109D00156278 /* FireBaseAuthRepository.swift */,
-				C572401A23CC10E800156278 /* FireBasePostRepository.swift */,
+				C572401823CC109D00156278 /* AuthRepositoryImpl.swift */,
+				C572401A23CC10E800156278 /* PostRepositoryImpl.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C572402D23CC966300156278 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C572402E23CC967000156278 /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				C572403223CC96EF00156278 /* Service */,
+				C572402D23CC966300156278 /* Network */,
+				C572402F23CC968F00156278 /* Local */,
+			);
+			path = DataStores;
+			sourceTree = "<group>";
+		};
+		C572402F23CC968F00156278 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				C572403123CC96CD00156278 /* OnMemoryStorage */,
+				C572403023CC96B300156278 /* KeychainStorage */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		C572403023CC96B300156278 /* KeychainStorage */ = {
+			isa = PBXGroup;
+			children = (
+				C572403723CC9C2000156278 /* KeychainStorage.swift */,
+			);
+			path = KeychainStorage;
+			sourceTree = "<group>";
+		};
+		C572403123CC96CD00156278 /* OnMemoryStorage */ = {
+			isa = PBXGroup;
+			children = (
+				C572403923CC9D3800156278 /* OnMemoryStorage.swift */,
+			);
+			path = OnMemoryStorage;
+			sourceTree = "<group>";
+		};
+		C572403223CC96EF00156278 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C572403323CC986200156278 /* FireBaseAuthService.swift */,
+				C572403523CC989300156278 /* FireBasePostService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C572403B23CC9D8600156278 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				C5CCAAF823CA454800CEC626 /* Appearance.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		C572403C23CC9DB500156278 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		C572403D23CC9DC600156278 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C572A7EF23C9BC4F00C990AF = {
@@ -368,10 +451,11 @@
 		C572A83823CA189B00C990AF /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				C572403D23CC9DC600156278 /* Protocols */,
+				C572403C23CC9DB500156278 /* LaunchScreen */,
+				C572403B23CC9D8600156278 /* Appearance */,
 				C572A83923CA18A900C990AF /* AppDelegate */,
 				C572A83A23CA18C600C990AF /* Extensions */,
-				C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */,
-				C5CCAAF823CA454800CEC626 /* Appearance.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -691,6 +775,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C572403423CC986200156278 /* FireBaseAuthService.swift in Sources */,
 				C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */,
 				C572401D23CC112700156278 /* PostRepository.swift in Sources */,
 				C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */,
@@ -708,10 +793,11 @@
 				C572400323CB464500156278 /* LoginViewModel.swift in Sources */,
 				C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */,
 				C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */,
+				C572403A23CC9D3800156278 /* OnMemoryStorage.swift in Sources */,
 				C572402923CC126500156278 /* PostUseCase.swift in Sources */,
 				C572400723CB468200156278 /* PostViewModel.swift in Sources */,
 				C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */,
-				C572401B23CC10E800156278 /* FireBasePostRepository.swift in Sources */,
+				C572401B23CC10E800156278 /* PostRepositoryImpl.swift in Sources */,
 				C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */,
 				C5723FFA23CB451000156278 /* ArrayTracker.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
@@ -719,12 +805,14 @@
 				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
 				C572400523CB466000156278 /* ListViewModel.swift in Sources */,
 				C572401F23CC113C00156278 /* AuthRepository.swift in Sources */,
-				C572401923CC109D00156278 /* FireBaseAuthRepository.swift in Sources */,
+				C572403823CC9C2000156278 /* KeychainStorage.swift in Sources */,
+				C572401923CC109D00156278 /* AuthRepositoryImpl.swift in Sources */,
 				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
 				C572402B23CC127600156278 /* SignUpUseCase.swift in Sources */,
 				C572400A23CB4BE700156278 /* ListNavigator.swift in Sources */,
 				C572401023CB4C2800156278 /* PostNavigator.swift in Sources */,
 				C5723FFC23CB453500156278 /* ObservableType+Rx.swift in Sources */,
+				C572403623CC989300156278 /* FireBasePostService.swift in Sources */,
 				C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
