@@ -1,15 +1,15 @@
 //
-//  AuthModel.swift
+//  FireBaseAuthRepository.swift
 //  ArchitectureSample01
 //
-//  Created by Naoki Kameyama on 2020/01/12.
+//  Created by Naoki Kameyama on 2020/01/13.
 //  Copyright © 2020 Naoki Kameyama. All rights reserved.
 //
 
 import Firebase
 import RxSwift
 
-class AuthModel {
+class FireBaseAuthRepository: AuthRepository {
 
     func checkLogin() -> Observable<Bool> {
         return Observable.create { observer in
@@ -31,7 +31,7 @@ class AuthModel {
                     return
                 }
                 guard let user = authResult?.user else { return }
-                observer.onNext(user)
+                observer.onNext(User(id: user.uid, email: user.email, isEmailVerified: user.isEmailVerified))
             }
             return Disposables.create()
         }
@@ -67,7 +67,7 @@ class AuthModel {
                     observer.onError(Exception.auth)
                     return
                 }
-                observer.onNext(loginUser)
+                observer.onNext(User(id: loginUser.uid, email: loginUser.email, isEmailVerified: loginUser.isEmailVerified))
             }
             return Disposables.create()
         }

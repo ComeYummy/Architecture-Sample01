@@ -44,7 +44,7 @@ class LogInViewController: UIViewController {
     }
 
     func initializeViewModel() {
-        loginViewModel = LoginViewModel(with: AuthModel(),
+        loginViewModel = LoginViewModel(with: LoginUseCase(with: FireBaseAuthRepository()),
                                         and: LoginNavigator(with: self))
     }
 

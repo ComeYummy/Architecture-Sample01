@@ -10,8 +10,6 @@
 		1FA6E0495B1CEB42014B3D15 /* Pods_ArchitectureSample01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8CBFB18F27DB0771CD69CE /* Pods_ArchitectureSample01.framework */; };
 		27E9192D199AB1353E265866 /* Pods_ArchitectureSample01Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBEAB3F7B1F96149406DE20 /* Pods_ArchitectureSample01Tests.framework */; };
 		3F636AF36F7BFA5CCF7129E5 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3971CEEFD599D80B1B94ED3 /* Pods_ArchitectureSample01_ArchitectureSample01UITests.framework */; };
-		C5723FE323CB060400156278 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE223CB060400156278 /* PostModel.swift */; };
-		C5723FE523CB06D800156278 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FE423CB06D800156278 /* AuthModel.swift */; };
 		C5723FF423CB447C00156278 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF323CB447C00156278 /* Exception.swift */; };
 		C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF523CB44C700156278 /* ActivityIndicator.swift */; };
 		C5723FF823CB44FA00156278 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5723FF723CB44FA00156278 /* ErrorTracker.swift */; };
@@ -26,6 +24,16 @@
 		C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400B23CB4BFE00156278 /* SignUpNavigator.swift */; };
 		C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400D23CB4C1400156278 /* LoginNavigator.swift */; };
 		C572401023CB4C2800156278 /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572400F23CB4C2800156278 /* PostNavigator.swift */; };
+		C572401923CC109D00156278 /* FireBaseAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401823CC109D00156278 /* FireBaseAuthRepository.swift */; };
+		C572401B23CC10E800156278 /* FireBasePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401A23CC10E800156278 /* FireBasePostRepository.swift */; };
+		C572401D23CC112700156278 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401C23CC112700156278 /* PostRepository.swift */; };
+		C572401F23CC113C00156278 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572401E23CC113C00156278 /* AuthRepository.swift */; };
+		C572402123CC115700156278 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402023CC115700156278 /* User.swift */; };
+		C572402323CC116500156278 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402223CC116500156278 /* Post.swift */; };
+		C572402523CC120600156278 /* ListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402423CC120600156278 /* ListUseCase.swift */; };
+		C572402723CC123C00156278 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402623CC123C00156278 /* LoginUseCase.swift */; };
+		C572402923CC126500156278 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402823CC126500156278 /* PostUseCase.swift */; };
+		C572402B23CC127600156278 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572402A23CC127600156278 /* SignUpUseCase.swift */; };
 		C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */; };
 		C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */; };
 		C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */; };
@@ -72,8 +80,6 @@
 		2CBEAB3F7B1F96149406DE20 /* Pods_ArchitectureSample01Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSample01Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D8CBFB18F27DB0771CD69CE /* Pods_ArchitectureSample01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSample01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B597D27AF515E71AC7DD2796 /* Pods-ArchitectureSample01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSample01.debug.xcconfig"; path = "Target Support Files/Pods-ArchitectureSample01/Pods-ArchitectureSample01.debug.xcconfig"; sourceTree = "<group>"; };
-		C5723FE223CB060400156278 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
-		C5723FE423CB06D800156278 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		C5723FF323CB447C00156278 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		C5723FF523CB44C700156278 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C5723FF723CB44FA00156278 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
@@ -88,6 +94,16 @@
 		C572400B23CB4BFE00156278 /* SignUpNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNavigator.swift; sourceTree = "<group>"; };
 		C572400D23CB4C1400156278 /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
 		C572400F23CB4C2800156278 /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
+		C572401823CC109D00156278 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
+		C572401A23CC10E800156278 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
+		C572401C23CC112700156278 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		C572401E23CC113C00156278 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		C572402023CC115700156278 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C572402223CC116500156278 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		C572402423CC120600156278 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
+		C572402623CC123C00156278 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		C572402823CC126500156278 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
+		C572402A23CC127600156278 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		C572A7F823C9BC4F00C990AF /* ArchitectureSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,15 +191,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		C5723FE123CB05E400156278 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C5723FE223CB060400156278 /* PostModel.swift */,
-				C5723FE423CB06D800156278 /* AuthModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		C5723FE823CB081300156278 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +203,6 @@
 		C5723FF223CB446B00156278 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C5723FF323CB447C00156278 /* Exception.swift */,
 				C5723FF523CB44C700156278 /* ActivityIndicator.swift */,
 				C5723FF723CB44FA00156278 /* ErrorTracker.swift */,
 				C5723FF923CB451000156278 /* ArrayTracker.swift */,
@@ -228,6 +234,74 @@
 			path = Navigators;
 			sourceTree = "<group>";
 		};
+		C572401123CC0F0300156278 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C5723FE023CB05D800156278 /* ViewControllers */,
+				C5723FFD23CB45A700156278 /* ViewModels */,
+				C5723FF223CB446B00156278 /* Utilities */,
+				C572400823CB4BD400156278 /* Navigators */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C572401223CC0F2C00156278 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C572401523CC0F5000156278 /* UseCases */,
+				C572401323CC0F3B00156278 /* Repositories */,
+				C572401423CC0F4800156278 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C572401323CC0F3B00156278 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C572401C23CC112700156278 /* PostRepository.swift */,
+				C572401E23CC113C00156278 /* AuthRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C572401423CC0F4800156278 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C572402023CC115700156278 /* User.swift */,
+				C572402223CC116500156278 /* Post.swift */,
+				C5723FF323CB447C00156278 /* Exception.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C572401523CC0F5000156278 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				C572402423CC120600156278 /* ListUseCase.swift */,
+				C572402623CC123C00156278 /* LoginUseCase.swift */,
+				C572402823CC126500156278 /* PostUseCase.swift */,
+				C572402A23CC127600156278 /* SignUpUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		C572401623CC106F00156278 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C572401723CC107A00156278 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C572401723CC107A00156278 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C572401823CC109D00156278 /* FireBaseAuthRepository.swift */,
+				C572401A23CC10E800156278 /* FireBasePostRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		C572A7EF23C9BC4F00C990AF = {
 			isa = PBXGroup;
 			children = (
@@ -253,13 +327,10 @@
 		C572A7FA23C9BC4F00C990AF /* ArchitectureSample01 */ = {
 			isa = PBXGroup;
 			children = (
-				C572400823CB4BD400156278 /* Navigators */,
-				C5723FF223CB446B00156278 /* Utilities */,
-				C5723FFD23CB45A700156278 /* ViewModels */,
-				C5723FE123CB05E400156278 /* Models */,
-				C5723FE023CB05D800156278 /* ViewControllers */,
-				C572A83923CA18A900C990AF /* AppDelegate */,
 				C572A83823CA189B00C990AF /* Application */,
+				C572401123CC0F0300156278 /* Presentation */,
+				C572401223CC0F2C00156278 /* Domain */,
+				C572401623CC106F00156278 /* Data */,
 				C572A82F23C9E97A00C990AF /* SupportingFiles */,
 			);
 			path = ArchitectureSample01;
@@ -297,6 +368,7 @@
 		C572A83823CA189B00C990AF /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				C572A83923CA18A900C990AF /* AppDelegate */,
 				C572A83A23CA18C600C990AF /* Extensions */,
 				C572A80623C9BC5000C990AF /* LaunchScreen.storyboard */,
 				C5CCAAF823CA454800CEC626 /* Appearance.swift */,
@@ -620,28 +692,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				C572400C23CB4BFE00156278 /* SignUpNavigator.swift in Sources */,
+				C572401D23CC112700156278 /* PostRepository.swift in Sources */,
 				C5CCAAF523CA2E6100CEC626 /* PostViewController.swift in Sources */,
+				C572402523CC120600156278 /* ListUseCase.swift in Sources */,
+				C572402723CC123C00156278 /* LoginUseCase.swift in Sources */,
 				C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */,
-				C5723FE323CB060400156278 /* PostModel.swift in Sources */,
+				C572402123CC115700156278 /* User.swift in Sources */,
 				C5723FF423CB447C00156278 /* Exception.swift in Sources */,
 				C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */,
-				C5723FE523CB06D800156278 /* AuthModel.swift in Sources */,
 				C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */,
 				C572400123CB45EB00156278 /* SignUpViewModel.swift in Sources */,
 				C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */,
+				C572402323CC116500156278 /* Post.swift in Sources */,
 				C5723FFF23CB45BB00156278 /* ViewModelType.swift in Sources */,
 				C572400323CB464500156278 /* LoginViewModel.swift in Sources */,
 				C572400E23CB4C1400156278 /* LoginNavigator.swift in Sources */,
 				C5CCAAFB23CA45A500CEC626 /* UIColor+.swift in Sources */,
+				C572402923CC126500156278 /* PostUseCase.swift in Sources */,
 				C572400723CB468200156278 /* PostViewModel.swift in Sources */,
 				C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */,
+				C572401B23CC10E800156278 /* FireBasePostRepository.swift in Sources */,
 				C5CCAAF923CA454800CEC626 /* Appearance.swift in Sources */,
 				C5723FFA23CB451000156278 /* ArrayTracker.swift in Sources */,
 				C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */,
 				C572A83723CA05A100C990AF /* LogInViewController.swift in Sources */,
 				C572A82E23C9E88800C990AF /* R.generated.swift in Sources */,
 				C572400523CB466000156278 /* ListViewModel.swift in Sources */,
+				C572401F23CC113C00156278 /* AuthRepository.swift in Sources */,
+				C572401923CC109D00156278 /* FireBaseAuthRepository.swift in Sources */,
 				C572A83E23CA231D00C990AF /* ListViewController.swift in Sources */,
+				C572402B23CC127600156278 /* SignUpUseCase.swift in Sources */,
 				C572400A23CB4BE700156278 /* ListNavigator.swift in Sources */,
 				C572401023CB4C2800156278 /* PostNavigator.swift in Sources */,
 				C5723FFC23CB453500156278 /* ObservableType+Rx.swift in Sources */,

@@ -38,13 +38,11 @@ class ListViewModel: ViewModelType {
         let error = ErrorTracker()
     }
 
-    private let postModel: PostModel
-    private let authModel: AuthModel
+    private let listUseCase: ListUseCase
     private let navigator: ListNavigator
 
-    init(with postModel: PostModel, authModel: AuthModel, and navigator: ListNavigator) {
-        self.postModel = postModel
-        self.authModel = authModel
+    init(with listUseCase: ListUseCase, and navigator: ListNavigator) {
+        self.listUseCase = listUseCase
         self.navigator = navigator
     }
 
@@ -52,36 +50,20 @@ class ListViewModel: ViewModelType {
         let state = State()
         let load = input.trigger
             .flatMap { [unowned self] _ in
-                self.postModel.read()
-                    .map { snap in
-                        var posts: [Post] = []
-                        if !snap.isEmpty {
-                            for item in snap.documents {
-                                posts.append(
-                                    Post(
-                                        id: item.documentID,
-                                        user: item["user"] as! String,
-                                        content: item["content"] as! String,
-                                        date: (item["date"] as! Timestamp).dateValue()
-                                    )
-                                )
-                            }
-                        }
-                        return posts
-                    }
+                return self.listUseCase.loadPosts()
                     .trackArray(state.contentArray)
                     .trackError(state.error)
                     .trackActivity(state.isLoading)
                     .mapToVoid()
                     .asDriverOnErrorJustComplete()
-            }
+        }
         let select = input.selectTrigger
             .withLatestFrom(state.contentArray) { [unowned self] (index: Int, posts: [Post]) in
                 self.navigator.toPost(with: posts[index])
             }
         let delete = input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                self.postModel.delete(state.contentArray.array[index].id)
+                self.listUseCase.delete(with: state.contentArray.array[index].id)
                     .asDriver(onErrorJustReturn: ())
             }
         let toPost = input.postTrigger
@@ -90,7 +72,7 @@ class ListViewModel: ViewModelType {
             })
         let logOut = input.logOutTrigger
             .flatMapLatest { [unowned self] _ in
-                self.authModel.logOut().asDriver(onErrorJustReturn: ())
+                self.listUseCase.logOut().asDriver(onErrorJustReturn: ())
             }
             .do(onNext: { [unowned self] _ in
                 self.navigator.toBack()

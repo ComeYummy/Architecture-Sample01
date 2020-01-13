@@ -1,22 +1,15 @@
 //
-//  PostModel.swift
+//  FireBasePostRepository.swift
 //  ArchitectureSample01
 //
-//  Created by Naoki Kameyama on 2020/01/12.
+//  Created by Naoki Kameyama on 2020/01/13.
 //  Copyright © 2020 Naoki Kameyama. All rights reserved.
 //
 
 import Firebase
 import RxSwift
 
-struct Post {
-    var id: String
-    var user: String
-    var content: String
-    var date: Date
-}
-
-class PostModel {
+class FireBasePostRepository: PostRepository {
 
     let db: Firestore
 
@@ -44,7 +37,7 @@ class PostModel {
         }
     }
 
-    func read() -> Observable<QuerySnapshot> {
+    func read() -> Observable<[Post]> {
         return Observable.create { [unowned self] observer in
             self.listener = self.db.collection("posts")
                 .order(by: "date")
@@ -61,7 +54,17 @@ class PostModel {
                     }
                     print("Current data: \(snap)")
 
-                    observer.onNext(snap)
+                    var posts: [Post] = []
+                    if !snap.isEmpty {
+                        for item in snap.documents {
+                            posts.append(Post(id: item.documentID,
+                                              user: item["user"] as! String,
+                                              content: item["content"] as! String,
+                                              date: (item["date"] as! Timestamp).dateValue())
+                            )
+                        }
+                    }
+                    observer.onNext(posts)
             }
             return Disposables.create()
         }
