@@ -38,6 +38,8 @@
 		C572403623CC989300156278 /* FireBasePostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403523CC989300156278 /* FireBasePostService.swift */; };
 		C572403823CC9C2000156278 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403723CC9C2000156278 /* KeychainStorage.swift */; };
 		C572403A23CC9D3800156278 /* OnMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572403923CC9D3800156278 /* OnMemoryStorage.swift */; };
+		C572404123CCA0C900156278 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572404023CCA0C900156278 /* AppDelegate+Firebase.swift */; };
+		C572404323CCA16400156278 /* AppDelegate+ IQKeyboardManagerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572404223CCA16400156278 /* AppDelegate+ IQKeyboardManagerSwift.swift */; };
 		C572A7FC23C9BC4F00C990AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */; };
 		C572A7FE23C9BC4F00C990AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */; };
 		C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572A7FF23C9BC4F00C990AF /* SignUpViewController.swift */; };
@@ -112,6 +114,8 @@
 		C572403523CC989300156278 /* FireBasePostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostService.swift; sourceTree = "<group>"; };
 		C572403723CC9C2000156278 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		C572403923CC9D3800156278 /* OnMemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnMemoryStorage.swift; sourceTree = "<group>"; };
+		C572404023CCA0C900156278 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
+		C572404223CCA16400156278 /* AppDelegate+ IQKeyboardManagerSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ IQKeyboardManagerSwift.swift"; sourceTree = "<group>"; };
 		C572A7F823C9BC4F00C990AF /* ArchitectureSample01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSample01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -464,6 +468,8 @@
 			isa = PBXGroup;
 			children = (
 				C572A7FB23C9BC4F00C990AF /* AppDelegate.swift */,
+				C572404023CCA0C900156278 /* AppDelegate+Firebase.swift */,
+				C572404223CCA16400156278 /* AppDelegate+ IQKeyboardManagerSwift.swift */,
 				C572A7FD23C9BC4F00C990AF /* SceneDelegate.swift */,
 			);
 			path = AppDelegate;
@@ -783,11 +789,13 @@
 				C572402723CC123C00156278 /* LoginUseCase.swift in Sources */,
 				C5723FF623CB44C700156278 /* ActivityIndicator.swift in Sources */,
 				C572402123CC115700156278 /* User.swift in Sources */,
+				C572404323CCA16400156278 /* AppDelegate+ IQKeyboardManagerSwift.swift in Sources */,
 				C5723FF423CB447C00156278 /* Exception.swift in Sources */,
 				C572A83C23CA18E700C990AF /* UINavigationItem+.swift in Sources */,
 				C572A84223CA25B400C990AF /* ListTableViewCell.swift in Sources */,
 				C572400123CB45EB00156278 /* SignUpViewModel.swift in Sources */,
 				C572A80023C9BC4F00C990AF /* SignUpViewController.swift in Sources */,
+				C572404123CCA0C900156278 /* AppDelegate+Firebase.swift in Sources */,
 				C572402323CC116500156278 /* Post.swift in Sources */,
 				C5723FFF23CB45BB00156278 /* ViewModelType.swift in Sources */,
 				C572400323CB464500156278 /* LoginViewModel.swift in Sources */,
