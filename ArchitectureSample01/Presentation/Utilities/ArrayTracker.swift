@@ -12,7 +12,7 @@ import RxCocoa
 
 final class ArrayTracker<T>: SharedSequenceConvertibleType {
     typealias SharingStrategy = DriverSharingStrategy
-    private let _array = Variable<[T]>([])
+    private let _array = BehaviorRelay<[T]>(value: [])
 
     var array: [T] {
         _array.value
@@ -31,11 +31,11 @@ final class ArrayTracker<T>: SharedSequenceConvertibleType {
     }
 
     private func onNext(_ array: [T]) {
-        _array.value = array
+        _array.accept(array)
     }
 
     deinit {
-        _array.value = []
+        _array.accept([])
     }
 }
 
