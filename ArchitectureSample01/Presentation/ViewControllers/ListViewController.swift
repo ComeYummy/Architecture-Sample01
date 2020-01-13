@@ -56,11 +56,12 @@ class ListViewController: UIViewController {
 
     func bindViewModel() {
 
-        let input = ListViewModel.Input(trigger: Driver.just(()),
-                                        postTrigger: addButton.rx.tap.asDriver(),
-                                        selectTrigger: tableView.rx.itemSelected.asDriver().map { $0.row },
-                                        deleteTrigger: tableView.rx.itemDeleted.asDriver().map { $0.row },
-                                        logOutTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver()
+        let input = ListViewModel.Input(
+            trigger: Driver.just(()),
+            postTrigger: addButton.rx.tap.asDriver(),
+            selectTrigger: tableView.rx.itemSelected.asDriver().map { $0.row },
+            deleteTrigger: tableView.rx.itemDeleted.asDriver().map { $0.row },
+            logOutTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver()
         )
         let output = listViewModel.transform(input: input)
 

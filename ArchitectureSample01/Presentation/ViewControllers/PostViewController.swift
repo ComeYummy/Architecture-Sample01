@@ -46,11 +46,13 @@ class PostViewController: UIViewController {
     }
 
     func bindViewModel() {
-        let input = PostViewModel.Input(postTrigger: postButton.rx.tap.asDriver(),
-                                        content: postTextField.rx.text
-                                            .map { if let t = $0 { return t } else { return "" } }
-                                            .asDriver(onErrorJustReturn: ""),
-                                        dismissTrigger: dismissButton.rx.tap.asDriver())
+        let input = PostViewModel.Input(
+            postTrigger: postButton.rx.tap.asDriver(),
+            content: postTextField.rx.text
+                .map { if let text = $0 { return text } else { return "" } }
+                .asDriver(onErrorJustReturn: ""),
+            dismissTrigger: dismissButton.rx.tap.asDriver()
+        )
         let output = postViewModel.transform(input: input)
         output.post.drive().disposed(by: disposeBag)
         output.dismiss.drive().disposed(by: disposeBag)

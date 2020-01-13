@@ -25,4 +25,3 @@ class SignUpNavigator {
         viewController?.navigationController?.pushViewController(vc, animated: false)
     }
 }
-

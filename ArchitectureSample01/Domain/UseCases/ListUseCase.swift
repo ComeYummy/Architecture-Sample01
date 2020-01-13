@@ -31,4 +31,3 @@ class ListUseCase {
         return authRepository.logOut()
     }
 }
-

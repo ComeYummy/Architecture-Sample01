@@ -15,19 +15,19 @@ final class ArrayTracker<T>: SharedSequenceConvertibleType {
     private let _array = Variable<[T]>([])
 
     var array: [T] {
-        return _array.value
+        _array.value
     }
 
-    func trackArray<O: ObservableConvertibleType>(from source: O) -> Observable<O.E> where O.E == [T] {
-        return source.asObservable().do(onNext: onNext)
+    func trackArray<O: ObservableConvertibleType>(from source: O) -> Observable<O.Element> where O.Element == [T] {
+        source.asObservable().do(onNext: onNext)
     }
 
     func asSharedSequence() -> SharedSequence<SharingStrategy, [T]> {
-        return _array.asObservable().asDriver(onErrorJustReturn: [])
+        _array.asObservable().asDriver(onErrorJustReturn: [])
     }
 
     func asObservable() -> Observable<[T]> {
-        return _array.asObservable()
+        _array.asObservable()
     }
 
     private func onNext(_ array: [T]) {
@@ -40,7 +40,7 @@ final class ArrayTracker<T>: SharedSequenceConvertibleType {
 }
 
 extension ObservableConvertibleType {
-    func trackArray<T>(_ arrayTracker: ArrayTracker<T>) -> Observable<E> where E == [T] {
-        return arrayTracker.trackArray(from: self)
+    func trackArray<T>(_ arrayTracker: ArrayTracker<T>) -> Observable<Element> where Element == [T] {
+         arrayTracker.trackArray(from: self)
     }
 }

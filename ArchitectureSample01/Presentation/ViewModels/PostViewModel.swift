@@ -46,10 +46,12 @@ class PostViewModel: ViewModelType {
             .flatMapLatest { [unowned self] content -> Driver<Void> in
                 if let sP = self.selectedPost {
                     return self.postUseCase.update(
-                        post: Post(id: sP.id,
-                             user: sP.user,
-                             content: content,
-                             date: Date()))
+                        post: Post(
+                            id: sP.id,
+                            user: sP.user,
+                            content: content,
+                            date: Date())
+                    )
                         .do(onNext: { [unowned self] _ in
                             self.navigator.toList()
                         })
@@ -63,7 +65,7 @@ class PostViewModel: ViewModelType {
                         .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 }
-        }
+            }
         let dismiss = input.dismissTrigger
             .do(onNext: { [unowned self] _ in
                 self.navigator.toList()

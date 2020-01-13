@@ -49,13 +49,15 @@ class LogInViewController: UIViewController {
     }
 
     func bindViewModel() {
-        let input = LoginViewModel.Input(loginTrigger: loginButton.rx.tap.asDriver(),
-                                          email: emailTextField.rx.text
-                                            .map { if let t = $0 { return t } else { return "" } }
-                                            .asDriver(onErrorJustReturn: ""),
-                                          password: passwordTextField.rx.text
-                                            .map { if let t = $0 { return t } else { return "" } }
-                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let input = LoginViewModel.Input(
+            loginTrigger: loginButton.rx.tap.asDriver(),
+            email: emailTextField.rx.text
+                .map { if let text = $0 { return text } else { return "" } }
+                .asDriver(onErrorJustReturn: ""),
+            password: passwordTextField.rx.text
+                .map { if let text = $0 { return text } else { return "" } }
+                .asDriver(onErrorJustReturn: "").asDriver()
+        )
         let output = loginViewModel.transform(input: input)
         output.login.drive(onNext: userWillLogin).disposed(by: disposeBag)
     }

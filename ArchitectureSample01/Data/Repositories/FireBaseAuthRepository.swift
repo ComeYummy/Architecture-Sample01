@@ -12,7 +12,7 @@ import RxSwift
 class FireBaseAuthRepository: AuthRepository {
 
     func checkLogin() -> Observable<Bool> {
-        return Observable.create { observer in
+        Observable.create { observer in
             if Auth.auth().currentUser != nil {
                 observer.onNext(true)
             } else {
@@ -23,11 +23,11 @@ class FireBaseAuthRepository: AuthRepository {
     }
 
     func signUp(with email: String, and password: String) -> Observable<User> {
-        return Observable.create { observer in
-            Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                if let e = error {
-                    print(e.localizedDescription)
-                    observer.onError(e)
+        Observable.create { observer in
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    observer.onError(error)
                     return
                 }
                 guard let user = authResult?.user else { return }
@@ -43,10 +43,10 @@ class FireBaseAuthRepository: AuthRepository {
                 observer.onError(Exception.auth)
                 return Disposables.create()
             }
-            user.sendEmailVerification() { error in
-                if let e = error {
-                    print(e.localizedDescription)
-                    observer.onError(e)
+            user.sendEmailVerification { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    observer.onError(error)
                     return
                 }
                 observer.onNext(())
@@ -57,10 +57,10 @@ class FireBaseAuthRepository: AuthRepository {
 
     func login(with email: String, and password: String) -> Observable<User> {
         return Observable.create { observer in
-            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-                if let e = error {
-                    print(e.localizedDescription)
-                    observer.onError(e)
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    observer.onError(error)
                     return
                 }
                 guard let loginUser = authResult?.user else {

@@ -50,13 +50,13 @@ class ListViewModel: ViewModelType {
         let state = State()
         let load = input.trigger
             .flatMap { [unowned self] _ in
-                return self.listUseCase.loadPosts()
+                self.listUseCase.loadPosts()
                     .trackArray(state.contentArray)
                     .trackError(state.error)
                     .trackActivity(state.isLoading)
                     .mapToVoid()
                     .asDriverOnErrorJustComplete()
-        }
+            }
         let select = input.selectTrigger
             .withLatestFrom(state.contentArray) { [unowned self] (index: Int, posts: [Post]) in
                 self.navigator.toPost(with: posts[index])

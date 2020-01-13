@@ -27,8 +27,8 @@ class FireBasePostRepository: PostRepository {
                 "content": content,
                 "date": Date()
             ]) { error in
-                if let e = error {
-                    observer.onError(e)
+                if let error = error {
+                    observer.onError(error)
                     return
                 }
                 observer.onNext(())
@@ -47,10 +47,8 @@ class FireBasePostRepository: PostRepository {
                         observer.onError(error!)
                         return
                     }
-                    for diff in snap.documentChanges {
-                        if diff.type == .added {
-                            print("New data: \(diff.document.data())")
-                        }
+                    for diff in snap.documentChanges where diff.type == .added {
+                        print("New data: \(diff.document.data())")
                     }
                     print("Current data: \(snap)")
 
@@ -65,7 +63,7 @@ class FireBasePostRepository: PostRepository {
                         }
                     }
                     observer.onNext(posts)
-            }
+                }
             return Disposables.create()
         }
     }
@@ -75,9 +73,9 @@ class FireBasePostRepository: PostRepository {
             self.db.collection("posts").document(post.id).updateData([
                 "content": post.content,
                 "date": post.date
-                ]) { error in
-                if let e = error {
-                    observer.onError(e)
+            ]) { error in
+                if let error = error {
+                    observer.onError(error)
                     return
                 }
                 observer.onNext(())
@@ -88,9 +86,9 @@ class FireBasePostRepository: PostRepository {
 
     func delete(_ documentID: String) -> Observable<Void> {
         return Observable.create { [unowned self] observer in
-            self.db.collection("posts").document(documentID).delete() { error in
-                if let e = error {
-                    observer.onError(e)
+            self.db.collection("posts").document(documentID).delete { error in
+                if let error = error {
+                    observer.onError(error)
                     return
                 }
                 observer.onNext(())

@@ -43,8 +43,10 @@ class SignUpViewController: UIViewController {
     }
 
     func initializeViewModel() {
-        signUpViewModel = SignUpViewModel.init(with: SignUpUseCase(with: FireBaseAuthRepository()),
-                                               and: SignUpNavigator(with: self))
+        signUpViewModel = SignUpViewModel(
+            with: SignUpUseCase(with: FireBaseAuthRepository()),
+            and: SignUpNavigator(with: self)
+        )
     }
 
     func bindViewModel() {
@@ -55,10 +57,10 @@ class SignUpViewController: UIViewController {
             loginTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver(),
             signUpTrigger: signUpButton.rx.tap.asDriver(),
             email: emailTextField.rx.text
-                .map { if let t = $0 { return t } else { return "" } }
+                .map { if let text = $0 { return text } else { return "" } }
                 .asDriver(onErrorJustReturn: ""),
             password: passwordTextField.rx.text
-                .map { if let t = $0 { return t } else { return "" } }
+                .map { if let text = $0 { return text } else { return "" } }
                 .asDriver(onErrorJustReturn: "").asDriver()
         )
         let output = signUpViewModel.transform(input: input)

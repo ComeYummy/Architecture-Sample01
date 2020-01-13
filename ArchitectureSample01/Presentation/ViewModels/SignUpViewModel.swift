@@ -45,7 +45,7 @@ class SignUpViewModel: ViewModelType {
         let signUp = input.signUpTrigger
             .withLatestFrom(requiredInputs)
             .flatMapLatest { [unowned self] (email: String, password: String) in
-                return self.signUpUseCase.signUp(with: email, and: password)
+                self.signUpUseCase.signUp(with: email, and: password)
                     .trackError(state.error)
                     .flatMapLatest { [unowned self] _ in
                         self.signUpUseCase.sendEmailVerification()
