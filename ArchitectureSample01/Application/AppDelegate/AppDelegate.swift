@@ -10,9 +10,23 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    static var shared: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
+    }
+
+    var window: UIWindow?
+
+//    static var firstViewController: UIViewController = MainBuilder().build()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Appearnce
         Appearance.initialSetup()
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = AppDelegate.firstViewController
+        self.window?.backgroundColor = UIColor.systemYellow
+        self.window?.makeKeyAndVisible()
 
         configureFirebase()
         configureIQKeyboardManagerSwift()

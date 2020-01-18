@@ -9,7 +9,7 @@
 import Foundation
 
 class OnMemoryStorage {
-    static let shared: OnMemoryStorage = OnMemoryStorage()
+    static let shared = OnMemoryStorage()
 
     private init() {}
 

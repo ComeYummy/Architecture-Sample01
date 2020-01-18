@@ -11,7 +11,7 @@ import RxSwift
 
 class FireBaseAuthService {
 
-    static let shared: FireBaseAuthService = FireBaseAuthService()
+    static let shared = FireBaseAuthService()
 
     private init() {}
 

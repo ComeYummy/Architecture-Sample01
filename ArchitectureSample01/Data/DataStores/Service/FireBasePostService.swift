@@ -11,7 +11,7 @@ import RxSwift
 
 class FireBasePostService {
 
-    static let shared: FireBasePostService = FireBasePostService()
+    static let shared = FireBasePostService()
 
     private init() {
         self.db = Firestore.firestore()

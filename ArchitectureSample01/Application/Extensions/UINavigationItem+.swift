@@ -9,7 +9,7 @@
 import UIKit
 
 extension UINavigationItem {
-    // 戻るボタンのタイトルを削除
+    // 次画面の戻るボタンのタイトルを削除
     func removeBackBarButtonTitle() {
         backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     }
