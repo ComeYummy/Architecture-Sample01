@@ -13,7 +13,7 @@ class SignUpUseCase {
 
     private let authRepository: AuthRepository
 
-    init(with authRepository: AuthRepository) {
+    init(authRepository: AuthRepository) {
         self.authRepository = authRepository
     }
 

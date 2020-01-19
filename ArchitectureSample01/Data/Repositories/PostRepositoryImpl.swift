@@ -11,6 +11,9 @@ import RxSwift
 
 class PostRepositoryImpl: PostRepository {
 
+    static var shared: PostRepositoryImpl = PostRepositoryImpl()
+    private init() {}
+
     func create(with content: String) -> Observable<Void> {
         return FireBasePostService.shared.create(with: content)
     }

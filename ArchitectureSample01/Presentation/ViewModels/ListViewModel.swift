@@ -12,6 +12,8 @@ import RxCocoa
 import Firebase
 
 class ListViewModel: ViewModelType {
+    typealias UseCaseType = ListUseCase
+    typealias WireframeType = ListWireframe
 
     struct Input {
         let trigger: Driver<Void>
@@ -22,12 +24,7 @@ class ListViewModel: ViewModelType {
     }
 
     struct Output {
-        let load: Driver<Void>
         let posts: Driver<[Post]>
-        let select: Driver<Void>
-        let delete: Driver<Void>
-        let toPost: Driver<Void>
-        let logOut: Driver<Void>
         let isLoading: Driver<Bool>
         let error: Driver<Error>
     }
@@ -38,52 +35,52 @@ class ListViewModel: ViewModelType {
         let error = ErrorTracker()
     }
 
-    private let listUseCase: ListUseCase
-    private let navigator: ListNavigator
+    private let useCase: UseCaseType
+    private let wireframe: WireframeType
+    private var disposeBag = DisposeBag()
 
-    init(with listUseCase: ListUseCase, and navigator: ListNavigator) {
-        self.listUseCase = listUseCase
-        self.navigator = navigator
+    init(useCase: UseCaseType, wireframe: WireframeType) {
+        self.useCase = useCase
+        self.wireframe = wireframe
     }
 
     func transform(input: ListViewModel.Input) -> ListViewModel.Output {
         let state = State()
-        let load = input.trigger
+
+        input.trigger
             .flatMap { [unowned self] _ in
-                self.listUseCase.loadPosts()
+                self.useCase.loadPosts()
                     .trackArray(state.contentArray)
                     .trackError(state.error)
                     .trackActivity(state.isLoading)
                     .mapToVoid()
                     .asDriverOnErrorJustComplete()
             }
-        let select = input.selectTrigger
+            .drive().disposed(by: disposeBag)
+
+        input.selectTrigger
             .withLatestFrom(state.contentArray) { [unowned self] (index: Int, posts: [Post]) in
-                self.navigator.toPost(with: posts[index])
+                self.wireframe.toPost(with: posts[index])
             }
-        let delete = input.deleteTrigger
+            .drive().disposed(by: disposeBag)
+
+        input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                self.listUseCase.delete(with: state.contentArray.array[index].id)
+                self.useCase.delete(with: state.contentArray.array[index].id)
                     .asDriver(onErrorJustReturn: ())
             }
-        let toPost = input.postTrigger
-            .do(onNext: { [unowned self] _ in
-                self.navigator.toPost()
-            })
-        let logOut = input.logOutTrigger
-            .flatMapLatest { [unowned self] _ in
-                self.listUseCase.logOut().asDriver(onErrorJustReturn: ())
-            }
-            .do(onNext: { [unowned self] _ in
-                self.navigator.toBack()
-            })
+            .drive().disposed(by: disposeBag)
 
-        return ListViewModel.Output(load: load,
-                                    posts: state.contentArray.asDriver(),
-                                    select: select,
-                                    delete: delete,
-                                    toPost: toPost,
-                                    logOut: logOut,
+        input.postTrigger.asObservable()
+            .flatMapLatest { [unowned self] _ in self.wireframe.toPost(with: nil) }
+            .subscribe().disposed(by: disposeBag)
+
+        input.logOutTrigger.asObservable()
+            .flatMapLatest { [unowned self] _ in self.useCase.logOut() }
+            .flatMapLatest { [unowned self] _ in self.wireframe.toBack() }
+            .subscribe().disposed(by: disposeBag)
+
+        return ListViewModel.Output(posts: state.contentArray.asDriver(),
                                     isLoading: state.isLoading.asDriver(),
                                     error: state.error.asDriver())
     }

@@ -11,19 +11,23 @@ import RxSwift
 import RxCocoa
 
 class SignUpViewController: UIViewController {
+    typealias ViewModelType = SignUpViewModel
+
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
 
-    var signUpViewModel: SignUpViewModel!
+    private var viewModel: ViewModelType!
+    private let disposeBag = DisposeBag()
 
-    let disposeBag = DisposeBag()
+    func inject(viewModel: ViewModelType) {
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureView()
-        initializeViewModel()
         bindViewModel()
     }
 
@@ -42,14 +46,8 @@ class SignUpViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializeViewModel() {
-        signUpViewModel = SignUpViewModel(
-            with: SignUpUseCase(with: AuthRepositoryImpl()),
-            and: SignUpNavigator(with: self)
-        )
-    }
-
     func bindViewModel() {
+//        guard let viewModel = viewModel else { return }
         let input = SignUpViewModel.Input(
             checkLoginTrigger: rx.sentMessage(#selector(viewWillAppear(_:)))
                 .map { _ in () }
@@ -63,10 +61,7 @@ class SignUpViewController: UIViewController {
                 .map { if let text = $0 { return text } else { return "" } }
                 .asDriver(onErrorJustReturn: "").asDriver()
         )
-        let output = signUpViewModel.transform(input: input)
-        output.checkLogin.drive().disposed(by: disposeBag)
-        output.login.drive().disposed(by: disposeBag)
-        output.signUp.drive().disposed(by: disposeBag)
+        _ = viewModel.transform(input: input)
     }
 }
 

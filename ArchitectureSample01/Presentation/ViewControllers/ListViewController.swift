@@ -12,19 +12,23 @@ import RxCocoa
 import UIKit
 
 class ListViewController: UIViewController {
+    typealias ViewModelType = ListViewModel
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
 
-    var listViewModel: ListViewModel!
-    let disposeBag = DisposeBag()
+    private var viewModel: ViewModelType!
+    private let disposeBag = DisposeBag()
+
+    func inject(viewModel: ViewModelType) {
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         initializeTableView()
         initializeUI()
-        initializeViewModel()
         bindViewModel()
     }
 
@@ -47,13 +51,6 @@ class ListViewController: UIViewController {
         addButton.tintColor = UIColor.white
     }
 
-    func initializeViewModel() {
-        listViewModel = ListViewModel(
-            with: ListUseCase(with: PostRepositoryImpl(), authRepository: AuthRepositoryImpl()),
-            and: ListNavigator(with: self)
-        )
-    }
-
     func bindViewModel() {
 
         let input = ListViewModel.Input(
@@ -63,17 +60,12 @@ class ListViewController: UIViewController {
             deleteTrigger: tableView.rx.itemDeleted.asDriver().map { $0.row },
             logOutTrigger: navigationItem.rightBarButtonItem!.rx.tap.asDriver()
         )
-        let output = listViewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
 
         output.posts
             .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { _, element, cell in
                 cell.setCellData(date: element.date, content: element.content)
             }
             .disposed(by: disposeBag)
-        output.load.drive().disposed(by: disposeBag)
-        output.select.drive().disposed(by: disposeBag)
-        output.delete.drive().disposed(by: disposeBag)
-        output.toPost.drive().disposed(by: disposeBag)
-        output.logOut.drive().disposed(by: disposeBag)
     }
 }

@@ -14,7 +14,7 @@ class ListUseCase {
     private let postRepository: PostRepository
     private let authRepository: AuthRepository
 
-    init(with postRepository: PostRepository, authRepository: AuthRepository) {
+    init(postRepository: PostRepository, authRepository: AuthRepository) {
         self.postRepository = postRepository
         self.authRepository = authRepository
     }

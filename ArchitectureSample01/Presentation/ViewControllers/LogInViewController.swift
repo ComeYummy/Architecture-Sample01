@@ -13,19 +13,22 @@ import RxCocoa
 import UIKit
 
 class LogInViewController: UIViewController {
+    typealias ViewModelType = LogInViewModel
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
-    var loginViewModel: LoginViewModel!
+    private var viewModel: ViewModelType!
+    private let disposeBag = DisposeBag()
 
-    let disposeBag = DisposeBag()
+    func inject(viewModel: ViewModelType) {
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
-        initializeViewModel()
         bindViewModel()
     }
 
@@ -43,13 +46,8 @@ class LogInViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializeViewModel() {
-        loginViewModel = LoginViewModel(with: LoginUseCase(with: AuthRepositoryImpl()),
-                                        and: LoginNavigator(with: self))
-    }
-
     func bindViewModel() {
-        let input = LoginViewModel.Input(
+        let input = LogInViewModel.Input(
             loginTrigger: loginButton.rx.tap.asDriver(),
             email: emailTextField.rx.text
                 .map { if let text = $0 { return text } else { return "" } }
@@ -58,7 +56,7 @@ class LogInViewController: UIViewController {
                 .map { if let text = $0 { return text } else { return "" } }
                 .asDriver(onErrorJustReturn: "").asDriver()
         )
-        let output = loginViewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
         output.login.drive(onNext: userWillLogin).disposed(by: disposeBag)
     }
 

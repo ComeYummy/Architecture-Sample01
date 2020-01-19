@@ -12,7 +12,7 @@ import RxSwift
 class PostUseCase {
     private let postRepository: PostRepository
 
-    init(with postRepository: PostRepository) {
+    init(postRepository: PostRepository) {
         self.postRepository = postRepository
     }
 

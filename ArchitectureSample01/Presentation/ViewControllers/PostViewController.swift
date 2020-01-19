@@ -12,19 +12,22 @@ import RxCocoa
 import UIKit
 
 class PostViewController: UIViewController {
+    typealias ViewModelType = PostViewModel
 
     @IBOutlet weak var postTextField: UITextField!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
 
-    var postViewModel: PostViewModel!
+    private var viewModel: ViewModelType!
+    private let disposeBag = DisposeBag()
 
-    let disposeBag = DisposeBag()
+    func inject(viewModel: ViewModelType) {
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializeViewModel()
         bindViewModel()
     }
 
@@ -38,13 +41,6 @@ class PostViewController: UIViewController {
         dismissButton.setImage(image, for: .normal)
     }
 
-    func initializeViewModel(with selectedPost: Post? = nil) {
-        guard postViewModel == nil else { return }
-        postViewModel = PostViewModel(with: PostUseCase(with: PostRepositoryImpl()),
-                                      and: PostNavigator(with: self),
-                                      and: selectedPost)
-    }
-
     func bindViewModel() {
         let input = PostViewModel.Input(
             postTrigger: postButton.rx.tap.asDriver(),
@@ -53,9 +49,7 @@ class PostViewController: UIViewController {
                 .asDriver(onErrorJustReturn: ""),
             dismissTrigger: dismissButton.rx.tap.asDriver()
         )
-        let output = postViewModel.transform(input: input)
-        output.post.drive().disposed(by: disposeBag)
-        output.dismiss.drive().disposed(by: disposeBag)
+        let output = viewModel.transform(input: input)
         output.defaultPost.map { $0?.content }.drive(postTextField.rx.text).disposed(by: disposeBag)
     }
 

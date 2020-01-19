@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 
 class PostViewModel: ViewModelType {
+    typealias UseCaseType = PostUseCase
+    typealias WireframeType = PostWireframe
 
     struct Input {
         let postTrigger: Driver<Void>
@@ -19,9 +21,7 @@ class PostViewModel: ViewModelType {
     }
 
     struct Output {
-        let post: Driver<Void>
         let defaultPost: Driver<Post?>
-        let dismiss: Driver<Void>
         let error: Driver<Error>
     }
 
@@ -29,52 +29,50 @@ class PostViewModel: ViewModelType {
         let error = ErrorTracker()
     }
 
-    private let selectedPost: Post?
-    private let postUseCase: PostUseCase
-    private let navigator: PostNavigator
+    private let useCase: UseCaseType
+    private let wireframe: WireframeType
+    private var disposeBag = DisposeBag()
 
-    init(with postUseCase: PostUseCase, and navigator: PostNavigator, and selectedPost: Post? = nil) {
-        self.postUseCase = postUseCase
-        self.navigator = navigator
+    private let selectedPost: Post?
+
+    init(useCase: UseCaseType, wireframe: WireframeType, selectedPost: Post? = nil) {
+        self.useCase = useCase
+        self.wireframe = wireframe
         self.selectedPost = selectedPost
     }
 
     func transform(input: PostViewModel.Input) -> PostViewModel.Output {
         let state = State()
-        let post = input.postTrigger
+
+        input.postTrigger
             .withLatestFrom(input.content)
             .flatMapLatest { [unowned self] content -> Driver<Void> in
                 if let sP = self.selectedPost {
-                    return self.postUseCase.update(
+                    return self.useCase.update(
                         post: Post(
                             id: sP.id,
                             user: sP.user,
                             content: content,
                             date: Date())
-                    )
-                        .do(onNext: { [unowned self] _ in
-                            self.navigator.toList()
-                        })
+                        )
                         .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 } else {
-                    return self.postUseCase.post(content)
-                        .do(onNext: { [unowned self] _ in
-                            self.navigator.toList()
-                        })
+                    return self.useCase.post(content)
                         .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 }
             }
-        let dismiss = input.dismissTrigger
-            .do(onNext: { [unowned self] _ in
-                self.navigator.toList()
-            })
+            .asObservable()
+            .flatMapLatest { [unowned self] _ in self.wireframe.toList() }
+            .subscribe().disposed(by: disposeBag)
+
+        input.dismissTrigger.asObservable()
+            .flatMapLatest { [unowned self] _ in self.wireframe.toList() }
+            .subscribe().disposed(by: disposeBag)
 
         return PostViewModel.Output(
-            post: post,
             defaultPost: Driver.just(selectedPost),
-            dismiss: dismiss,
             error: state.error.asDriver()
         )
     }

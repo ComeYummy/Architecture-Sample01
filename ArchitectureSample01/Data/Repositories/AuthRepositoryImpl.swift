@@ -11,6 +11,9 @@ import RxSwift
 
 class AuthRepositoryImpl: AuthRepository {
 
+    static var shared: AuthRepositoryImpl = AuthRepositoryImpl()
+    private init() {}
+
     func checkLogin() -> Observable<Bool> {
         return FireBaseAuthService.shared.checkLogin()
     }
