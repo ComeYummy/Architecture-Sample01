@@ -173,6 +173,10 @@
 		C57AB49B23D405E900F975CD /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
 		C57AB49D23D40F4700F975CD /* AppRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootViewController.swift; sourceTree = "<group>"; };
 		C57AB49F23D40F5D00F975CD /* AppRootViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppRootViewController.storyboard; sourceTree = "<group>"; };
+		C57AB4A423D4383E00F975CD /* Repository.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Repository.md; sourceTree = "<group>"; };
+		C57AB4A523D4389900F975CD /* View.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = View.md; sourceTree = "<group>"; };
+		C57AB4A623D438D400F975CD /* ViewController.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewController.md; sourceTree = "<group>"; };
+		C57AB4A723D4390800F975CD /* ViewModel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ViewModel.md; sourceTree = "<group>"; };
 		C5CCAAF423CA2E6100CEC626 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		C5CCAAF623CA2E7400CEC626 /* PostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostViewController.storyboard; sourceTree = "<group>"; };
 		C5CCAAF823CA454800CEC626 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 		C572A82F23C9E97A00C990AF /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C57AB4A323D4381600F975CD /* Templetes */,
 				C572A80423C9BC5000C990AF /* Assets.xcassets */,
 				C572A80923C9BC5000C990AF /* Info.plist */,
 				C572A83223C9EFFE00C990AF /* GoogleService-Info.plist */,
@@ -573,6 +578,17 @@
 				C57AB49923D3F70700F975CD /* UIViewController+Rx.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		C57AB4A323D4381600F975CD /* Templetes */ = {
+			isa = PBXGroup;
+			children = (
+				C57AB4A423D4383E00F975CD /* Repository.md */,
+				C57AB4A523D4389900F975CD /* View.md */,
+				C57AB4A623D438D400F975CD /* ViewController.md */,
+				C57AB4A723D4390800F975CD /* ViewModel.md */,
+			);
+			path = Templetes;
 			sourceTree = "<group>";
 		};
 		E14251319CD5E005E611471D /* Pods */ = {
