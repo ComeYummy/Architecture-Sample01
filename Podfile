@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'ArchitectureSample01' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -16,11 +16,15 @@ target 'ArchitectureSample01' do
 
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'RealmSwift'
+  pod 'KeychainAccess'
 
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SwiftLint'
   pod 'R.swift'
+
+  pod 'IQKeyboardManagerSwift'
+  pod 'FontAwesome.swift'
 
   target 'ArchitectureSample01Tests' do
     inherit! :search_paths
