@@ -860,7 +860,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n#    swiftlint autocorrect --format\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n  \"${PODS_ROOT}/SwiftLint/swiftlint\"\n# \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from cocoaPods https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		C572A82C23C9CF5B00C990AF /* R.swift Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
